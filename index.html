@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head> <!-- head declaration contains information about the HTML document-->
+    <meta name="viewport" content="width=device-width, intial-scale=1.0"> <!--sets the visible area to the width of the device, zoomed at a scale of 1.0-->
+    <meta charset="utf-8">
+    <title>working on it :)</title>
+    <!--href values are currently placeholders-->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+    </head>
+
+    <!--FOR THE MAP-->
+    <div id="map"></div>
+    <script src="./main.js"></script>
+   <body>
+    <div class="container">
+        <h1 class="form__title">Get Train and Station Information</h1>
+        <div class="form__input-group">
+            <p class="form__text">Enter Regional Rail Station</p>
+            <input type="form__text" id="station" autofocus placeholder="Station Name">
+            <button class="btn-station">Get Arrivals</button>
+            
+            <div class="showErrors"></div>
+            <div class="showSchedule"></div>
+            <div class="showArrivals"></div>
+        </div>
+    </div>
+   </body>
+    
