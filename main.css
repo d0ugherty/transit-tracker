@@ -18,9 +18,13 @@ body {
     background-size: cover;
 }
 
+#map { height: 550px;
+    width: 750px; }
+
+
 .container {
     width: 400px;
-    max-width: 400px;
+    max-width: 750px;
     margin: 1rem;
     padding: 2rem;
     box-shadow: 0 0 40px rgba(0,0,0,0.2);
@@ -29,7 +33,7 @@ body {
 }
 
 .container,
-.form__input,
+.req1,
 .form__input {
     font: 500 1rem 'Roboto', sans-serif;
 }
@@ -73,7 +77,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.form__input {
+.form__input{
     display: block;
     width: 100%;
     padding: 0.75rem;
@@ -84,7 +88,17 @@ body {
     background: #cec9d0;
     transition: background 0.2s, border-color 0.2s;
 }
-
+.form__options{
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    border: 1px solid #5f5676;
+    outline: none;
+    background: #cec9d0;
+    transition: background 0.2s, border-color 0.2s;
+}
 .form__input:focus {
     border-color: var(--color-primary);
     background: #dfaef972;
@@ -130,7 +144,7 @@ body {
 
 
 .btn-station {
-    width: 100%;
+    width: 50%;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
@@ -142,7 +156,26 @@ body {
     background: var(--color-text);
 }
 
+.btn-train {
+    width: 50%;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-text);
+}
+
+
 .btn-station:hover {
+    background: #a05c21;
+    transition: 0.4s;
+    color: var(--color-primary);
+}
+.btn-train:hover {
     background: #a05c21;
     transition: 0.4s;
     color: var(--color-primary);
@@ -152,7 +185,6 @@ body {
     transform: scale(0.90);
 }
 
-
-
- #map { height: 550px;
-        width: 750px; }
+.btn-train:active {
+    transform: scale(0.90);
+}
