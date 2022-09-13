@@ -1,12 +1,11 @@
 
-
-const map = L.map('map').setView([39.952325, -75.163705], 10);
+//const map = L.map('map').setView([39.952325, -75.163705], 10);
 
 //map tiles
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-maxZoom: 19,
-attribution: '© OpenStreetMap'
-}).addTo(map);
+//L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//maxZoom: 19,
+//attribution: '© OpenStreetMap'
+//}).addTo(map);
 
 
 
@@ -23,27 +22,22 @@ attribution: '© OpenStreetMap'
  */
 
 $(document).ready(function(){
-  $('#trainLocation').click(function (){
-    let request = new XMLHttpRequest();
-    const url = `https://www3.septa.org/api/TrainView/index.php`;
-    request.onreadystatechange = function() {
-   
-    console.log('Ready State: ' + request.readyState);
-    console.log('Status: ' + request.status);
-      if (this.readyState === 4 && this.status === 200){
-        console.log('Status: ' + request.status);
-        console.log('Ready State: ' + request.readyState);
-        const response = JSON.parse(this.responseText);
-        getElements(response);
-        } else {
-          console.log('Ready State: ' + request.readyState);
-          console.log('Status: ' + request.status);
+    
+      $.ajax({
+        type: 'GET',
+        url: "https://www3.septa.org/api/TrainView/index.php",
+        contentType: "application/json",
+        dataType: 'json',
+        sucess: function(result){
+          console.log('SUCCESS');
+          $.each(result, function(i, item){
+            let trainNumber = item.trainno;
+            if(item.line == "West Trenton")
+            {
+                alert('Train Number: ' + trainNumber);
+            }
+          });
         }
-      }
-        request.open("GET",url,true);
-        request.send();
-        function getElements(response){
-          $('.showTrains').text(response.line);
-        }
-    });
-  });
+      });
+  
+});
