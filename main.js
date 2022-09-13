@@ -15,52 +15,35 @@ attribution: '© OpenStreetMap'
  *  Goal: Retrieve ongitude and latitude of a SEPTA regional train
  *  and add a marker to the map
  *  >   1. figure out successful api call
+ *           a. ISSUE: call is correct but not going through
+ *              i. TRY: process the API call with AJAX
  *  >   2. Retrieve data
  *  >   3. Store data
  *  >  
  */
 
-
-
-
-let request = new XMLHttpRequest();
-const url =`https://www3.septa.org/api/TrainView/index.php`;
-request.open('GET', url, true);
-request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-
-request.onload = logTrainLine(request);
- function logTrainLine(request){
-    let train = [
-        {
-          "lat": "string",
-          "lon": "string",
-          "trainno": "string",
-          "service": "string",
-          "dest": "string",
-          "currentstop": "string",
-          "nextstop": "string",
-          "line": "string",
-          "consist": "string",
-          "heading": 0,
-          "late": 0,
-          "SOURCE": "string",
-          "TRACK": "string",
-          "TRACK_CHANGE": "string"
-        }
-      ];
-    let data = request.response;
-   if(request.readyState === 4) {
-        if(request.status >= 200 && request.status <= 400){
-            data.forEarch(train => {
-            console.log(train.line);
-        });
+$(document).ready(function(){
+  $('#trainLocation').click(function (){
+    let request = new XMLHttpRequest();
+    const url = `https://www3.septa.org/api/TrainView/index.php`;
+    request.onreadystatechange = function() {
+   
+    console.log('Ready State: ' + request.readyState);
+    console.log('Status: ' + request.status);
+      if (this.readyState === 4 && this.status === 200){
+        console.log('Status: ' + request.status);
+        console.log('Ready State: ' + request.readyState);
+        const response = JSON.parse(this.responseText);
+        getElements(response);
         } else {
-             console.log('ERROR: ' + request.status);
+          console.log('Ready State: ' + request.readyState);
+          console.log('Status: ' + request.status);
         }
-    }
-};
-
-request.send();
-
-
+      }
+        request.open("GET",url,true);
+        request.send();
+        function getElements(response){
+          $('.showTrains').text(response.line);
+        }
+    });
+  });

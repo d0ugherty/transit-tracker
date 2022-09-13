@@ -188,3 +188,7 @@ body {
 .btn-train:active {
     transform: scale(0.90);
 }
+
+.showTrains{
+    color: var(--color-text);
+}
