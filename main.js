@@ -23,10 +23,13 @@ const map = L.map('map', {
  *        a. ISSUE: ajax call not executing on button click
  *          i. FIX: event.preventDefault()
  *  >   3. Display Data
+ *  >     a. ISSUE: markers for stations not appearing
  *  >  
  */
 
 $(document).ready(function() {
+  
+
   $("#trainInfo").on('click', function(event){
     $.ajax({
       url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
@@ -39,10 +42,18 @@ $(document).ready(function() {
         });
       }
     });
+    $.ajax({
+      url: "https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.95205&type=rail_stations&radius=50",
+      type: 'GET',
+      dataType: "json",
+      success: function(data){
+        $.each(data, function(i,item){
+          displayStationLoc(item);
+        });
+      }
+    });
     event.preventDefault();
   });
-  
-
 });
 
 //Adds a marker of a train's location onto the map
@@ -53,10 +64,10 @@ function displayTrainCurrentLoc(item){
 }
 //Puts a circle on regional rail station locations
 function displayStationLoc(item){
-  let circle = L.circle([item.location_lat, item.location_lon], {
+    L.circle([item.location_lat, item.location_lon], {
     color: 'red',
     fillColor: 'red',
-    fillOpacity: 1.0,
+    fillOpacity: .5,
     radius: 200
   }).addTo(map);
 }
