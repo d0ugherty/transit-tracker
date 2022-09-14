@@ -59,7 +59,13 @@ $(document).ready(function() {
 //Adds a marker of a train's location onto the map
 function displayTrainCurrentLoc(item){
   let trainNumber = item.trainno;
-  let trainMarker = L.marker([item.lat, item.lon]).addTo(map);
+  let trainIcon = L.icon({
+    iconUrl: './packages/leaflet/images/SEPTA_train.png',
+    iconSize: [20, 20,]
+   // iconAnchor: [22, 94],
+    //popupAnchor: [-3, -76],
+  });
+  let trainMarker = L.marker([item.lat, item.lon], {icon: trainIcon}).addTo(map);
   trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</>`).openPopup();
 }
 //Puts a circle on regional rail station locations
@@ -72,7 +78,7 @@ function displayStationLoc(item){
  // }).addTo(map);
 
   var stationIcon = L.icon({
-    iconUrl: './packages/leaflet/images/station.png',
+    iconUrl: './packages/leaflet/images/SEPTARegionalRail.png',
     iconSize: [20, 20,]
    // iconAnchor: [22, 94],
     //popupAnchor: [-3, -76],
