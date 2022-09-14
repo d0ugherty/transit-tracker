@@ -41,6 +41,7 @@ $(document).ready(function() {
     });
     event.preventDefault();
   });
+  
 
 });
 
@@ -49,4 +50,13 @@ function displayTrainCurrentLoc(item){
   let trainNumber = item.trainno;
   let trainMarker = L.marker([item.lat, item.lon]).addTo(map);
   trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</>`).openPopup();
+}
+//Puts a circle on regional rail station locations
+function displayStationLoc(item){
+  let circle = L.circle([item.location_lat, item.location_lon], {
+    color: 'red',
+    fillColor: 'red',
+    fillOpacity: 1.0,
+    radius: 200
+  }).addTo(map);
 }
