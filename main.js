@@ -1,11 +1,16 @@
 
-const map = L.map('map').setView([39.952325, -75.163705], 10);
+//const map = L.map('map').setView([39.952325, -75.163705], 10);
 
 //map tiles
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-maxZoom: 19,
-attribution: '© OpenStreetMap'
-}).addTo(map);
+const map = L.map('map', {
+  center: [39.952325, -75.163705],
+  zoom: 10,
+  layers:[
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png'),
+    L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png'),
+   
+  ]
+});
 
 
 
@@ -15,28 +20,33 @@ attribution: '© OpenStreetMap'
  *  and add a marker to the map
  *  >   1. figure out successful api call - DONE
  *  >   2. Retrieve data - DONE
- *  >   3. Store data
- *  >   4. Display Data
+ *        a. ISSUE: ajax call not executing on button click
+ *          i. FIX: event.preventDefault()
+ *  >   3. Display Data
  *  >  
  */
 
-$(document).ready(function(){
-    
-  $.ajax({
-    url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
-    type: 'GET',
-   dataType: "jsonp",
-    success: function(data){
+$(document).ready(function() {
+  $("#trainInfo").on('click', function(event){
+    $.ajax({
+      url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
+      type: 'GET',
+      dataType: "json",
+      success: function(data){
       $.each(data, function(i,item){
-          var trainNumber =item.trainno;
-          if( item.line== 'West Trenton')
-          {
-              alert("Train Number " + trainNumber + ' ' + item.dest);
-          }
-  
-      });
-    }
+         displayTrainCurrentLoc(item);
+         //alert("Train Number " + trainNumber + ' ' + item.dest);
+        });
+      }
+    });
+    event.preventDefault();
   });
-  
-  
+
 });
+
+//Adds a marker of a train's location onto the map
+function displayTrainCurrentLoc(item){
+  let trainNumber = item.trainno;
+  let trainMarker = L.marker([item.lat, item.lon]).addTo(map);
+  trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</>`).openPopup();
+}
