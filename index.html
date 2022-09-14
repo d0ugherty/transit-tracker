@@ -26,10 +26,10 @@
     <div class="container">
         <form class="form form" id="main">
          <h1 class="form__title">Get Train and Station Information</h1>
-         <div class="form__input-group">
-                <p class="form__text">Select Regional Rail Station</p>
-                <div class="form__options">
-                <select name="station" onchange="this.form.submit()"><option value="">Select Station</option>
+         <p class="form__text">See Regional Rail Arrivals At:</p>
+         <div class="select__station">
+                <select name="slct__station" id="slct__station" onchange="this.form.submit()">
+                    <option value="">Select Station</option>
                     <option value="9th St">9th Street Station</option>
                     <option value="30th Street Station">30th Street Station</option>
                     <option value="49th St">49th Street Station</option>
@@ -184,15 +184,11 @@
                     <option value="Wynnewood">Wynnewood Station</option>
                     <option value="Yardley">Yardley Station</option>
                 </select>
-                </div>
-                <button class="btn-station" id="stationInfo" type = "submit">Get Station Info</button>
-                
         </div>
+        
         <div class="form__input-group"> 
             <button class="btn-train" id="trainInfo" type = "submit">Get Train Locations</button>
-            
-              
-         </div>
+        </div>
          <div class="form__input-group">
              <button class="btn-trolley" id="trolleyInfo" type ="submit">Get Trolley Locations</button>
          </div>
