@@ -43,7 +43,7 @@ $(document).ready(function() {
       }
     });
     $.ajax({
-      url: "https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.95205&type=rail_stations&radius=50",
+      url: "https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.95205&type=rail_stations&radius=150",
       type: 'GET',
       dataType: "json",
       success: function(data){
@@ -64,10 +64,14 @@ function displayTrainCurrentLoc(item){
 }
 //Puts a circle on regional rail station locations
 function displayStationLoc(item){
-    L.circle([item.location_lat, item.location_lon], {
+    L.circleMarker([item.location_lat, item.location_lon], {
     color: 'red',
     fillColor: 'red',
-    fillOpacity: .5,
-    radius: 200
+    fillOpacity: 1.0,
+    radius: 4
   }).addTo(map);
+}
+//Function to retrieve a station's next arrival
+function nextArrival(item){
+  
 }
