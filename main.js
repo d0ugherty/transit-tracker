@@ -43,12 +43,12 @@ $(document).ready(function() {
       }
     });
     $.ajax({
-      url: "https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.95205&type=rail_stations&radius=150",
+      url: "https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=150",
       type: 'GET',
       dataType: "json",
       success: function(data){
         $.each(data, function(i,item){
-          displayStationLoc(item);
+            displayStationLoc(item);
         });
       }
     });
@@ -64,12 +64,29 @@ function displayTrainCurrentLoc(item){
 }
 //Puts a circle on regional rail station locations
 function displayStationLoc(item){
-    L.circleMarker([item.location_lat, item.location_lon], {
-    color: 'red',
-    fillColor: 'red',
-    fillOpacity: 1.0,
-    radius: 4
-  }).addTo(map);
+    //L.circleMarker([item.location_lat, item.location_lon], {
+   // color: 'red',
+   // fillColor: 'red',
+   // fillOpacity: 1.0,
+  //  radius: 4
+ // }).addTo(map);
+
+  var stationIcon = L.icon({
+    iconUrl: './packages/leaflet/images/station.png',
+    iconSize: [20, 20,]
+   // iconAnchor: [22, 94],
+    //popupAnchor: [-3, -76],
+  });
+  L.marker([item.location_lat, item.location_lon], {icon: stationIcon}).addTo(map);
+}
+
+//Display an icon for trolley stops
+function displayTrolleyIcon(item){
+  let trolleyStop = L.icon({
+    iconUrl: './packages/leaflet/images/trolley1.png',
+    iconSize: [20,20]
+  });
+  L.marker([item.location_lat, item.location_lon], {icon: trolleyStop}).addTo(map);
 }
 //Function to retrieve a station's next arrival
 function nextArrival(item){
