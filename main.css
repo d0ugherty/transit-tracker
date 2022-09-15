@@ -233,18 +233,18 @@ select::-ms-expand {
 }
 
 
-.btn-station:hover {
-    background: #a05c21;
-    transition: 0.4s;
+.btn-trolley:hover {
+    background: #6b9460;
+    transition: 0.6s;
     color: var(--color-primary);
 }
 .btn-train:hover {
-    background: #a05c21;
-    transition: 0.4s;
+    background: #688192;
+    transition: 0.6s;
     color: var(--color-primary);
 }
 
-.btn-station:active {
+.btn-trolley:active {
     transform: scale(0.90);
 }
 
