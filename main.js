@@ -1,30 +1,10 @@
 
-/**
- *  Phase 1:
- *  >   1. figure out successful api call - DONE
- *  >   2. Retrieve data - DONE
- *        a. ISSUE: ajax call not executing on button click
- *          i. FIX: event.preventDefault()
- *  >   3. Display Data 
- *  >     a. Regional rail train locations -DONE
- *  >     b. Regional rail stations - DONE
- *  >     c. Trolley locations
- *  >     d. Trolley stops
- *  >     e. station arrivals
- *  Phase 2:
- *  >     1. Live location updates - DONE
- *  >     2. Visualize vehicle heading
- *  >     3. 
- */
-
-
-
-
 /***************
+ *  Map creation using the Leaflet JavaScript library
  * 
- * Map creation
- * 
- * 
+ *  'stationLayer' and 'trainLayer' were created so markers can be added to layer groups rather than
+ *   the map itself. This makes for easy marker removal either for toggling or 
+ *   the retrieval of new data (live updating)
  * */
 const map = L.map('map', {
   center: [39.952325, -75.163705],
@@ -36,17 +16,22 @@ const map = L.map('map', {
   ]
 });
 
-//Initialize separate layers for vehicle positions and station locations
 let trainLayer = L.layerGroup().addTo(map);
 let stationLayer = L.layerGroup().addTo(map);
 
 
+/**
+ * Web document stuff
+ * 
+ * Multiple URLs are needed for getting locations of Regional Rail
+ * Station locations.For some reason the max radius to get locations is around 8 miles.
+ * 
+ * Trolley stop locations are gathered by route number. Might divide the the location gathering
+ * by trolley route/rail line
+ */
 $(document).ready(function() {
-    
   
-  $("#trainInfo").on('click', function(event){ //Begin Train Info Button event handler
-    //For some reason the max radius to get locations is around 8 miles
-   let railStationURLs = ["https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=55&callback=?",
+  let railStationURLs = ["https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.598&lat=40.031&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.625&lat=39.079&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.705&lat=39.689&type=rail_stations&radius=55&callback=?",
@@ -57,8 +42,17 @@ $(document).ready(function() {
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.221&lat=40.241&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.094&lat=40.184&type=rail_stations&radius=55&callback=?"];
 
-  sendRequest();
-  function sendRequest(){
+  let trolleyStopURLs = ["https://www3.septa.org/api/Stops/index.php?req1=10&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=11&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=15&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=34&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=36&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=101&callback=?",
+    "https://www3.septa.org/api/Stops/index.php?req1=102&callback=?"];
+
+  $("#trainInfo").on('click', function(event){ 
+   sendRequest();
+    function sendRequest(){
     trainLayer.clearLayers();
     $.ajax({
       url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
@@ -70,8 +64,7 @@ $(document).ready(function() {
         });
       },
       complete: function() {
-        // Schedule the next request when the current one's complete
-        setInterval(sendRequest, 10000); // The interval set to 5 seconds
+        setInterval(sendRequest, 10000); 
       }
     });
   }
@@ -89,16 +82,10 @@ $(document).ready(function() {
        event.preventDefault();
     }); //End Train Button Event Handler
 
-  $('#trolleyInfo').on('click', function(event) { //Begin trolley info button event handler
-    let trolleyStopURLs = ["https://www3.septa.org/api/Stops/index.php?req1=10&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=11&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=15&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=34&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=36&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=101&callback=?",
-    "https://www3.septa.org/api/Stops/index.php?req1=102&callback=?"];
+  $('#trolleyInfo').on('click', function(event) { 
+    
     $.ajax({
-      url: "https://www3.septa.org/api/TransitViewAll/index.php&callback=?", //TransitView trolley url here
+      url: "https://www3.septa.org/api/TransitViewAll/index.php&callback=?",
       type: 'GET',
       dataType: 'jsonp',
       success: function(data){
@@ -137,13 +124,11 @@ function displayTrainCurrentLoc(item){
   let trainIcon = L.icon({
     iconUrl: './packages/leaflet/images/SEPTA_train.png',
     iconSize: [20, 20,]
-   // iconAnchor: [22, 94],
-    //popupAnchor: [-3, -76],
   });
   let trainMarker = L.marker([item.lat, item.lon], {icon: trainIcon}).addTo(trainLayer);
   trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</h>`);
 }
-//Puts a circle on regional rail station locations
+
 function displayStationLoc(item){
    let stationMarker = L.circleMarker([item.location_lat, item.location_lon], {
     color: '#2C3E50',
@@ -155,7 +140,7 @@ function displayStationLoc(item){
   stationMarker.bindPopup(`<h>${item.location_name}</h>`);
 }
 
-//Display trolley locations
+
 function displayTrolleyCurrentLoc(item){
   let trolleyIcon = L.icon({
     iconUrl: './packages/leaflet/images/trolley1.png',
@@ -166,7 +151,7 @@ function displayTrolleyCurrentLoc(item){
                           `Next Stop: ${item.routes.next_stop_name}<br>` + `Destination: ${item.routes.destination}</h>`).openPopup();
 }
 
-//Display trolley stops
+
 function displayTrolleyStops(item){
   let stationMarker = L.circleMarker([item.lat, item.lon], {
     color: '#207100',
@@ -177,7 +162,7 @@ function displayTrolleyStops(item){
   }).addTo(layerGroup);
   stationMarker.bindPopup(`<h>${item.stopname}</h>`);
 }
-//Function to retrieve a station's next arrival
+
 function nextArrival(item){
   
 }
