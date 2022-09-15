@@ -12,7 +12,7 @@
  *  >     d. Trolley stops
  *  >     e. station arrivals
  *  Phase 2:
- *  >     1. Live location updates
+ *  >     1. Live location updates - DONE
  *  >     2. Visualize vehicle heading
  *  >     3. 
  */
@@ -36,16 +36,17 @@ const map = L.map('map', {
   ]
 });
 
-var layerGroup = L.layerGroup().addTo(map);
-
+//Initialize separate layers for vehicle positions and station locations
+let trainLayer = L.layerGroup().addTo(map);
+let stationLayer = L.layerGroup().addTo(map);
 
 
 $(document).ready(function() {
     
   
   $("#trainInfo").on('click', function(event){ //Begin Train Info Button event handler
-      //For some reason the max radius to get locations is around 8 miles
-  let railStationURLs = ["https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=55&callback=?",
+    //For some reason the max radius to get locations is around 8 miles
+   let railStationURLs = ["https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.598&lat=40.031&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.625&lat=39.079&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.705&lat=39.689&type=rail_stations&radius=55&callback=?",
@@ -55,7 +56,10 @@ $(document).ready(function() {
   "https://www3.septa.org/api/locations/get_locations.php?lon=-74.857&lat=40.171&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.221&lat=40.241&type=rail_stations&radius=55&callback=?",
   "https://www3.septa.org/api/locations/get_locations.php?lon=-75.094&lat=40.184&type=rail_stations&radius=55&callback=?"];
-  layerGroup.clearLayers();
+
+  sendRequest();
+  function sendRequest(){
+    trainLayer.clearLayers();
     $.ajax({
       url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
       type: 'GET',
@@ -64,8 +68,13 @@ $(document).ready(function() {
       $.each(data, function(i,item){
          displayTrainCurrentLoc(item);
         });
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setInterval(sendRequest, 10000); // The interval set to 5 seconds
       }
     });
+  }
     $.each(railStationURLs, function(i,u) {
       $.ajax(u, 
         { type: 'POST',
@@ -131,7 +140,7 @@ function displayTrainCurrentLoc(item){
    // iconAnchor: [22, 94],
     //popupAnchor: [-3, -76],
   });
-  let trainMarker = L.marker([item.lat, item.lon], {icon: trainIcon}).addTo(layerGroup);
+  let trainMarker = L.marker([item.lat, item.lon], {icon: trainIcon}).addTo(trainLayer);
   trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</h>`);
 }
 //Puts a circle on regional rail station locations
@@ -142,7 +151,7 @@ function displayStationLoc(item){
     fillColor: '#c9d3d9',
     fillOpacity: 1.0,
     radius: 6
-  }).addTo(layerGroup);
+  }).addTo(stationLayer);
   stationMarker.bindPopup(`<h>${item.location_name}</h>`);
 }
 
