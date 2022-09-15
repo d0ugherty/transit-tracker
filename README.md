@@ -10,5 +10,3 @@ SEPTA API: http://www3.septa.org/api/
 Leaflet: https://leafletjs.com/download.html
 
 Open Railway Map: https://www.openrailwaymap.org/
-
-
