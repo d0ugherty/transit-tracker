@@ -35,7 +35,7 @@ body {
 
 
 .container {
-    width: 400px;
+    width: 500px;
     max-width: 750px;
     margin: 1rem;
     padding: 2rem;
@@ -46,7 +46,8 @@ body {
 
 .container,
 .req1,
-.form__input {
+.form__input,
+.form__button-group {
     font: 500 1rem 'Roboto', sans-serif;
 }
 
@@ -89,6 +90,9 @@ body {
     margin-bottom: 1rem;
 }
 
+.form__button-group {
+    margin-bottom: 1rem;
+}
  
 select {
     -webkit-appearance: none;
@@ -194,11 +198,15 @@ select::-ms-expand {
 
 
 .btn-station {
-    width: 50%;
+    width: 40%;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
-    color: var(--color-primary);
+    color: var(--color-regional-rail);
     border: none;
     border-radius: var(--border-radius);
     outline: none;
@@ -207,7 +215,12 @@ select::-ms-expand {
 }
 
 .btn-train {
-    width: 50%;
+    float: left;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    width: 40%;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
@@ -220,7 +233,11 @@ select::-ms-expand {
 }
 
 .btn-trolley {
-    width: 50%;
+    width: 40;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
@@ -232,23 +249,36 @@ select::-ms-expand {
     background: var(--color-trolley);
 }
 
+.btn-station {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    width: 40;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-regional-rail-secondary);
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: var(--color-regional-rail);
+}
 
 .btn-trolley:hover {
     background: #6b9460;
-    transition: 0.6s;
-    color: var(--color-primary);
+    transition: 1.4s;
+    color: #081c00;
 }
-.btn-train:hover {
+.btn-train:hover,.btn-station:hover {
     background: #688192;
-    transition: 0.6s;
-    color: var(--color-primary);
+    transition: 1.4s;
+    color: #151f27;
 }
 
-.btn-trolley:active {
-    transform: scale(0.90);
-}
-
-.btn-train:active {
+.btn-train:active,.btn-station:active,.btn-trolley:active {
     transform: scale(0.90);
 }
 
