@@ -18,6 +18,8 @@
 
 let trainLayer = L.layerGroup().addTo(map);
 let stationLayer = L.layerGroup().addTo(map);
+let trolleyLayer = L.layerGroup().addTo(map);
+let trolleyStopLayer = L.layerGroup().addTo(map);
 
 
 /**
@@ -87,20 +89,20 @@ $(document).ready(function() {
 
   $("#trolleyInfo").on('click', function(event) {
 
-      /*$.ajax({
-          url: "https://www3.septa.org/api/TransitViewAll/index.php&callback=?",
+      $.ajax({
+          url: "https://www3.septa.org/api/TransitViewAll/index.php",
           type: 'GET',
           dataType: 'jsonp',
           success: function(data) {
               $.each(data, function(i, item) {
-                  if (item.routes == "10" || item.routes == "11" || item.routes == "15" ||
-                      item.routes == "34" || item.routes == "36" || item.routes == "101" ||
-                      item.routes == "102") {
+                  if (item[0] == "10" || item[0] == "11" || item[0] == "15" ||
+                      item[0] == "34" || item[0] == "36" || item[0] == "101" ||
+                      item[0] == "102") {
                       displayTrolleyCurrentLoc(item);
                   }
               });
           }
-      });*/
+      });
       $.each(trolleyStopURLs, function(i, u) {
           $.ajax(u, {
               type: 'POST',
@@ -138,10 +140,10 @@ function displayTrainCurrentLoc(item) {
 function displayStationLoc(item) {
   let stationMarker = L.circleMarker([item.location_lat, item.location_lon], {
       color: '#2C3E50',
-      weight: 4,
+      weight: 5,
       fillColor: '#c9d3d9',
       fillOpacity: 1.0,
-      radius: 6
+      radius: 7
   }).addTo(stationLayer);
   stationMarker.bindPopup(`<h>${item.location_name}</h>`);
 }
@@ -152,22 +154,22 @@ function displayTrolleyCurrentLoc(item) {
       iconUrl: './packages/leaflet/images/trolley1.png',
       iconSize: [20, 20]
   });
-  let trolleyMarker = L.marker([item.routes.lat, item.routes.lon], {
+  let trolleyMarker = L.marker([item[0].lat, item[0].lng], {
       icon: trolleyIcon
-  }).addTo(layerGroup);
-  trolleyMarker.bindPopup(`<h> Route ${item.routes}<br>` + `Vehicle: ${item.routes.vehicleID}<br>` +
-      `Next Stop: ${item.routes.next_stop_name}<br>` + `Destination: ${item.routes.destination}</h>`).openPopup();
+  }).addTo(trolleyLayer);
+  trolleyMarker.bindPopup(`<h> Route ${item[0]}<br>` + `Vehicle: ${item[0].vehicleID}<br>` +
+      `Next Stop: ${item[0].next_stop_name}<br>` + `Destination: ${item[0].destination}</h>`).openPopup();
 }
 
 
 function displayTrolleyStops(item) {
-  let stationMarker = L.circleMarker([item.lat, item.lon], {
+  let stationMarker = L.circleMarker([item.lat, item.lng], {
       color: '#207100',
-      weight: 4,
+      weight: 3,
       fillColor: '#cfd9cd',
       fillOpacity: 1.0,
-      radius: 4
-  }).addTo(layerGroup);
+      radius: 6
+  }).addTo(trolleyStopLayer);
   stationMarker.bindPopup(`<h>${item.stopname}</h>`);
 }
 
