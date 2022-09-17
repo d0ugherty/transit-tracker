@@ -20,13 +20,25 @@
     </head>
    
    <body>
-    <div id="map"></div>
-     <!--FOR THE MAP-->
+    <div class="map__container">
+        <h2 class="map__header">Tracking and Info</h2>
+        <div id="map"></div>
+        
+        <div class="form__button-group--train"> 
+            <button class="btn-train" id="trainInfo" type = "submit">SEPTA Regional Rail</button>
+            <!--<button class="btn-station" id="stationInfo" type ="submit">Regional Rail Arrivals</button>-->
+            <button class="btn-njt" id="njtRail" type ="submit">New Jersey Transit Rail</button>
+        </div>
+         <div class="form__button-group--trolley">
+             <button class="btn-trolley" id="trolleyInfo" type ="submit">SEPTA Subway-Surface Trolley</button>
+        </div>
+    </div>
+    
 
     <div class="container">
         <form class="form form" id="main">
-         <h1 class="form__title">Get Train and Station Information</h1>
-         <p class="form__text">See Regional Rail Arrivals At:</p>
+         <h1 class="form__title">SEPTA Regional Rail Arrivals</h1>
+         <p class="form__text">See Next Arrivals At:</p>
          <div class="select__station">
                 <select name="slct__station" id="slct__station" onchange="this.form.submit()">
                     <option value="">Select Station</option>
@@ -185,18 +197,17 @@
                     <option value="Yardley">Yardley Station</option>
                 </select>
         </div>
-        
-        <div class="form__button-group--train"> 
-            <button class="btn-train" id="trainInfo" type = "submit">Regional Rail Tracking</button>
-        <div class="form__button-group--train">
-                <button class="btn-station" id="stationInfo" type ="submit">Regional Rail Station Arrivals</button>
-        </div>
-        </div>
-         <div class="form__button-group">
-             <button class="btn-trolley" id="trolleyInfo" type ="submit">Subway-Surface Trolley Tracking</button>
-        </div>
-        
-         </div>
+    </div>
+    <div class="container-njt">
+        <form class="form form" id="njt">
+            <h1 class="form__title">New Jersey Transit Rail Schedule</h1>
+            <p class="form__text">See Schedule For:</p>
+                <div class="select__station">
+                    <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
+                    </select>"
+                </div>
+        </form>
+    </div>
             <div class="showErrors"></div>
             <div class="showSchedule"></div>
             
