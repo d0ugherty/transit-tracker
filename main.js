@@ -62,12 +62,10 @@ $(document).ready(function() {
                         "https://www3.septa.org/api/TransitView/index.php?route=101&callback=?",
                         "https://www3.septa.org/api/TransitView/index.php?route=102&callback=?"]
 
-let check = true; //resets to prevent new request after clearing the map
-
   $("#trainInfo").on('click', function(event) {
-    if(check){
+    
       sendRequest();
-    }
+    
       function sendRequest() {
           trainLayer.clearLayers();
           $.ajax({
@@ -132,13 +130,11 @@ let check = true; //resets to prevent new request after clearing the map
   }); //End Trolley Button Event Handler
 
   $("#clear").on('click', function(event){
-    trainLayer.clearLayers();
-    stationLayer.clearLayers();
-    trolleyLayer.clearLayers();
-    trolleyStopLayer.clearLayers();
-    check = false;
+    location.reload();
     });
+ $("#njtRail").on('click', function(event){
 
+ });
 });
 
 /*
