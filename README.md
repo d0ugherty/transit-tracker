@@ -3,6 +3,9 @@ Interactive map mostly just to mess around with SEPTA's API along with learning 
 Not sure what I want to ultimately do with this project except build it up, play around with it, and see where it goes.
 
 Using the Leaflet JavaScript library for map functionality with Open Railway Map's tile layers to emphasize rail infrastructure.
+h
+
+![alt text](ttps://github.com/sauce-picante/transit-tracker/blob/dev/screenshots/map.png?raw=true)
 
 SEPTA API documentation: http://www3.septa.org/
 
