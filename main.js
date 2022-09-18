@@ -14,6 +14,9 @@
     ]
 });
 
+map.attributionControl.addAttribution('Data <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>'+ 
+                                    ' Style: <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>'+
+                                    '<a href="http://www.openrailwaymap.org/">OpenRailwayMap</a>');
 let trainLayer = L.layerGroup().addTo(map);
 let stationLayer = L.layerGroup().addTo(map);
 let trolleyLayer = L.layerGroup().addTo(map);
