@@ -45,18 +45,29 @@ $(document).ready(function() {
       "https://www3.septa.org/api/locations/get_locations.php?lon=-75.094&lat=40.184&type=rail_stations&radius=55&callback=?"
   ];
 
-  let trolleyStopURLs = ["https://www3.septa.org/api/Stops/index.php?req1=10&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=11&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=15&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=34&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=36&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=101&callback=?",
-      "https://www3.septa.org/api/Stops/index.php?req1=102&callback=?"
+  let trolleyStopURLs = ["https://www3.septa.org/api/Stops/index.php?req1=10",
+      "https://www3.septa.org/api/Stops/index.php?req1=11",
+      "https://www3.septa.org/api/Stops/index.php?req1=15",
+      "https://www3.septa.org/api/Stops/index.php?req1=34",
+      "https://www3.septa.org/api/Stops/index.php?req1=36",
+      "https://www3.septa.org/api/Stops/index.php?req1=101",
+      "https://www3.septa.org/api/Stops/index.php?req1=102"
   ];
+  
+  let trolleyLocURLs = ["https://www3.septa.org/api/TransitView/index.php?route=10&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=11&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=15&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=34&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=36&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=101&callback=?",
+                        "https://www3.septa.org/api/TransitView/index.php?route=102&callback=?"]
+
+let check = true; //resets to prevent new request after clearing the map
 
   $("#trainInfo").on('click', function(event) {
+    if(check){
       sendRequest();
-
+    }
       function sendRequest() {
           trainLayer.clearLayers();
           $.ajax({
@@ -88,35 +99,46 @@ $(document).ready(function() {
   }); //End Train Button Event Handler
 
   $("#trolleyInfo").on('click', function(event) {
-
-      $.ajax({
-          url: "https://www3.septa.org/api/TransitViewAll/index.php",
-          type: 'GET',
-          dataType: 'jsonp',
-          success: function(data) {
-              $.each(data, function(i, item) {
-                  if (item[0] == "10" || item[0] == "11" || item[0] == "15" ||
-                      item[0] == "34" || item[0] == "36" || item[0] == "101" ||
-                      item[0] == "102") {
-                      displayTrolleyCurrentLoc(item);
-                  }
-              });
-          }
-      });
-      $.each(trolleyStopURLs, function(i, u) {
-          $.ajax(u, {
-              type: 'POST',
-              dataType: 'jsonp',
-              success: function(data) {
-                  $.each(data, function(i, item) {
-                      displayTrolleyStops(item);
-                  });
-              }
-          });
-          
-      });
-      event.preventDefault();
+    sendRequest();
+    function sendRequest(){
+        trolleyLayer.clearLayers();
+        $.each(trolleyLocURLs, function(i,u) {
+            $.ajax(u, {
+                type: 'POST',
+                dataType:'jsonp',
+                success: function(data){
+                    $.each(data, function(i,item){
+                        displayTrolleyLoc(item);
+                    });
+                },
+                complete: function() {
+                    setInterval(sendRequest,5000);
+                }
+            });
+        });
+    }
+    $.each(trolleyStopURLs, function(i, u) {
+        $.ajax(u, {
+                type: 'POST',
+                dataType: 'jsonp',
+                success: function(data) {
+                    $.each(data, function(i, item) {
+                        displayTrolleyStops(item);
+                    });
+                }
+            });
+    });
+    event.preventDefault();
   }); //End Trolley Button Event Handler
+
+  $("#clear").on('click', function(event){
+    trainLayer.clearLayers();
+    stationLayer.clearLayers();
+    trolleyLayer.clearLayers();
+    trolleyStopLayer.clearLayers();
+    check = false;
+    });
+
 });
 
 /*
@@ -134,7 +156,7 @@ function displayTrainCurrentLoc(item) {
   let trainMarker = L.marker([item.lat, item.lon], {
       icon: trainIcon
   }).addTo(trainLayer);
-  trainMarker.bindPopup(`<h>Train No. ${trainNumber}<br>` + `Next Stop: ${item.nextstop} <br>` + `Line: ${item.line}</h>`);
+  trainMarker.bindPopup(`<b><h3>Train No. </b> ${trainNumber}<br>` + `<b>Next Stop: </b> ${item.nextstop} <br>` + `<b>Line: </b> ${item.line}</h3>`);
 }
 
 function displayStationLoc(item) {
@@ -145,20 +167,20 @@ function displayStationLoc(item) {
       fillOpacity: 1.0,
       radius: 7
   }).addTo(stationLayer);
-  stationMarker.bindPopup(`<h>${item.location_name}</h>`);
+  stationMarker.bindPopup(`<h3>${item.location_name}</h3>`);
 }
 
 
-function displayTrolleyCurrentLoc(item) {
+function displayTrolleyLoc(item,route) {
   let trolleyIcon = L.icon({
       iconUrl: './packages/leaflet/images/trolley1.png',
       iconSize: [20, 20]
   });
-  let trolleyMarker = L.marker([item[0].lat, item[0].lng], {
+  let trolleyMarker = L.marker([item[route].lat, item[route].lng], {
       icon: trolleyIcon
   }).addTo(trolleyLayer);
-  trolleyMarker.bindPopup(`<h> Route ${item[0]}<br>` + `Vehicle: ${item[0].vehicleID}<br>` +
-      `Next Stop: ${item[0].next_stop_name}<br>` + `Destination: ${item[0].destination}</h>`).openPopup();
+  trolleyMarker.bindPopup(`<b><h> Route ${item[route]}</b><br>` + `Vehicle: ${item[route].vehicleID}<br>` +
+      `Next Stop: ${item[route].next_stop_name}<br>` + `Destination: ${item[route].destination}</h>`).openPopup();
 }
 
 
@@ -170,7 +192,7 @@ function displayTrolleyStops(item) {
       fillOpacity: 1.0,
       radius: 6
   }).addTo(trolleyStopLayer);
-  stationMarker.bindPopup(`<h>${item.stopname}</h>`);
+  stationMarker.bindPopup(`<h3>${item.stopname}</h3>`);
 }
 
 function nextArrival(item) {
