@@ -1,5 +1,5 @@
 # septa-map
-Interactive map mostly just to mess around with SEPTA's API. 
+Interactive map mostly just to mess around with SEPTA's API along with learning how to use JSON and GTFS data. 
 
 Using the Leaflet JavaScript library for map functionality with Open Railway Map's tile layers to emphasize rail infrastructure.
 
@@ -18,4 +18,4 @@ Open Railway Map: https://www.openrailwaymap.org/
 1. Subway-Surface Trolley Locations
 2. Fix icon flickering
 3. New Jersey Transit stuff
-
+4. Visualize vehicle's directional heading
