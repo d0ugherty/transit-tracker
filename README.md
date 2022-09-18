@@ -1,4 +1,4 @@
-# septa-map
+# transit-tracker
 Interactive map mostly just to mess around with SEPTA's API along with learning how to use JSON and GTFS data. 
 
 Using the Leaflet JavaScript library for map functionality with Open Railway Map's tile layers to emphasize rail infrastructure.
@@ -19,3 +19,5 @@ Open Railway Map: https://www.openrailwaymap.org/
 2. Fix icon flickering
 3. New Jersey Transit stuff
 4. Visualize vehicle's directional heading
+5. Display by route
+6. toggle
