@@ -11,6 +11,7 @@ Leaflet: https://leafletjs.com/download.html
 
 Open Railway Map: https://www.openrailwaymap.org/
 
+gtfs-utils library: https://github.com/public-transport/gtfs-utils
 
 
 ## TO DO:
