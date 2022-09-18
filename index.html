@@ -22,6 +22,9 @@
    <body>
     <div class="map__container">
         <h2 class="map__header">Tracking and Info</h2>
+        <div class ="form__button">
+            <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>
+        </div>
         <div id="map"></div>
         
         <div class="form__button-group--train"> 
@@ -34,13 +37,13 @@
         </div>
     </div>
     
-
-    <div class="container">
-        <form class="form form" id="main">
-         <h1 class="form__title">SEPTA Regional Rail Arrivals</h1>
-         <p class="form__text">See Next Arrivals At:</p>
-         <div class="select__station">
-                <select name="slct__station" id="slct__station" onchange="this.form.submit()">
+    <div class ="schedule">
+        <div class="container-septa">
+            <form class="form form" id="main">
+            <h1 class="form__title">SEPTA Regional Rail Arrivals</h1>
+             <p class="form__text">See Next Five Arrivals At:</p>
+            <div class="select__station">
+                  <select name="slct__station" id="slct__station" onchange="this.form.submit()">
                     <option value="">Select Station</option>
                     <option value="9th St">9th Street Station</option>
                     <option value="30th Street Station">30th Street Station</option>
@@ -195,18 +198,19 @@
                     <option value="Wynnefield Avenue">Wynnefield Ave. Station</option>
                     <option value="Wynnewood">Wynnewood Station</option>
                     <option value="Yardley">Yardley Station</option>
-                </select>
+                 </select>
+            </div>
         </div>
-    </div>
-    <div class="container-njt">
-        <form class="form form" id="njt">
-            <h1 class="form__title">New Jersey Transit Rail Schedule</h1>
-            <p class="form__text">See Schedule For:</p>
+        <div class="container-njt">
+            <form class="form form" id="njt">
+                <h1 class="form__title">New Jersey Transit Rail Schedule</h1>
+                    <p class="form__text">See Schedule For:</p>
                 <div class="select__station">
                     <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
                     </select>"
                 </div>
-        </form>
+            </form>
+        </div>
     </div>
             <div class="showErrors"></div>
             <div class="showSchedule"></div>
