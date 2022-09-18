@@ -18,4 +18,4 @@ Open Railway Map: https://www.openrailwaymap.org/
 1. Subway-Surface Trolley Locations
 2. Fix icon flickering
 3. New Jersey Transit stuff
-
+4. Visualize vehicle's directional heading
