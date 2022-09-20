@@ -68,15 +68,15 @@ $(document).ready(function() {
       sendRequest();
     
       function sendRequest() {
-          trainLayer.clearLayers();
-          $.ajax({
-              url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
-              type: 'GET',
-              dataType: "jsonp",
-              success: function(data) {
-                  $.each(data, function(i, item) {
-                      displayTrainCurrentLoc(item);
-                  });
+        trainLayer.clearLayers();
+        $.ajax({
+            url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
+            type: 'GET',
+            dataType: "jsonp",
+            success: function(data) {
+                $.each(data, function(i, item) {
+                displayTrainCurrentLoc(item);
+                });
               },
               complete: function() {
                   setInterval(sendRequest, 10000);
@@ -130,10 +130,10 @@ $(document).ready(function() {
     event.preventDefault();
   }); //End Trolley Button Event Handler
 
-  $("#clear").on('click', function(event){
+$("#clear").on('click', function(event){
     location.reload();
     });
- $("#njtRail").on('click', function(event){
-    
+$("#njtRail").on('click', function(event){
+   //TO DO: finish this
  });
 });
