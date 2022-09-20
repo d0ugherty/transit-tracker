@@ -39,7 +39,7 @@ function displayTrainCurrentLoc(item) {
         icon: trolleyIcon
     }).addTo(trolleyLayer);
     trolleyMarker.bindPopup(`<b><h> Route ${item[route]}</b><br>` + `Vehicle: ${item[route].vehicleID}<br>` +
-        `Next Stop: ${item[route].next_stop_name}<br>` + `Destination: ${item[route].destination}</h>`).openPopup();
+        `Next Stop: ${item[route].next_stop_name}<br>` + `Destination: ${item[route].destination}</h>`);
   }
   
   
