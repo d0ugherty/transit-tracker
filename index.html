@@ -37,14 +37,34 @@
          <div class="form__button-group--trolley">
              <button class="btn-trolley" id="trolleyInfo" type ="submit">SEPTA Subway-Surface Trolley</button>
         </div>
+        <div class="form__button-group--train">
+            <div class ="form__select-map">
+                <select name="slct__line" id="slct__line" onchange="this.form.submit()">
+                <option value="">Display Regional Rail Line</option>
+                <option value="Airport">Airport</option>
+                <option value="Chestnut Hill East">Chestnut Hill East</option>
+                <option value="Chestnut Hill West">Chestnut Hill West</option>
+                <option value="Cynwyd">Cynwyd</option>
+                <option value="Fox Chase">Foxchase</option>
+                <option value="Lansdale">Lansdale/Doylestown</option>
+                <option value="Norristown">Manayunk/Norristown</option>
+                <option value="Media">Media/Wawa</option>
+                <option value="Paoli">Paoli/Thorndale</option>
+                <option value="Trenton">Trenton</option>
+                <option value="Warminster">Warminster</option>
+                <option value="Wilmington">Wilmington/Newark</option>
+                <option value="West Trenton">West Trenton</option>
+            </select>"
+        </div>
+        </div>
     </div>
     
     <div class ="schedule">
         <div class="container-septa">
             <form class="form form" id="main">
             <h1 class="form__title">SEPTA Regional Rail Arrivals</h1>
-             <p class="form__text">See Next Five Arrivals At:</p>
-            <div class="select__station">
+            <p class="form__text">See Next Five Arrivals At:</p>
+            <div class="form__select">
                   <select name="slct__station" id="slct__station" onchange="this.form.submit()">
                     <option value="">Select Station</option>
                     <option value="9th St">9th Street Station</option>
@@ -207,7 +227,7 @@
             <form class="form form" id="njt">
                 <h1 class="form__title">New Jersey Transit Rail Schedule</h1>
                     <p class="form__text">See Schedule For:</p>
-                <div class="select__station">
+                <div class="form__select">
                     <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
                     </select>"
                 </div>
