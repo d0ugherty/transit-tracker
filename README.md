@@ -28,5 +28,6 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 2. Fix icon flickering
 3. New Jersey Transit stuff (learn how to process GTFS data)
 4. Visualize vehicle's directional heading
-5. Display by route
+5. Display map markers by route
 6. toggle
+7. Display station schedules/arrivals
