@@ -17,11 +17,15 @@
 map.attributionControl.addAttribution('Data <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>'+ 
                                     ' Style: <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a>'+
                                     '<a href="http://www.openrailwaymap.org/">OpenRailwayMap</a>');
-let trainLayer = L.layerGroup().addTo(map);
+let trainLayer = L.layerGroup();
 let stationLayer = L.layerGroup().addTo(map);
 let trolleyLayer = L.layerGroup().addTo(map);
 let trolleyStopLayer = L.layerGroup().addTo(map);
 
+let trainIcon = L.icon({
+    iconUrl: './packages/leaflet/images/SEPTA_train.png',
+   // iconSize: [23, 27 ]
+});
 
 /**
 * Web document stuff
@@ -65,27 +69,26 @@ $(document).ready(function() {
 
   $("#trainInfo").on('click', function(event) {
     
-      sendRequest();
-    
-      function sendRequest() {
-        trainLayer.clearLayers();
+    sendRequest();
+    function sendRequest(){
         $.ajax({
             url: "https://www3.septa.org/api/TrainView/index.php?&callback=?",
             type: 'GET',
             dataType: "jsonp",
             success: function(data) {
+                trainLayer.clearLayers();
                 $.each(data, function(i, item) {
-                displayTrainCurrentLoc(item);
+                displayTrainCurrentLoc(item, trainIcon, trainLayer);
                 });
               },
-              complete: function() {
-                  setInterval(sendRequest, 10000);
+              complete: function(){
+                setInterval(sendRequest, 10000);
               }
           });
-      }
-      $.each(railStationURLs, function(i, u) {
+    }
+    $.each(railStationURLs, function(i, u) {
           $.ajax(u, {
-              type: 'POST',
+              type: 'GET',
               dataType: 'jsonp',
               success: function(data) {
                   $.each(data, function(i, item) {
@@ -103,7 +106,7 @@ $(document).ready(function() {
         trolleyLayer.clearLayers();
         $.each(trolleyLocURLs, function(i,u) {
             $.ajax(u, {
-                type: 'POST',
+                type: 'GET',
                 dataType:'jsonp',
                 success: function(data){
                     $.each(data, function(i,item){
@@ -111,14 +114,14 @@ $(document).ready(function() {
                     });
                 },
                 complete: function() {
-                    setInterval(sendRequest,5000);
+                    setInterval(sendRequest,10000);
                 }
             });
         });
     }
     $.each(trolleyStopURLs, function(i, u) {
         $.ajax(u, {
-                type: 'POST',
+                type: 'GET',
                 dataType: 'jsonp',
                 success: function(data) {
                     $.each(data, function(i, item) {
