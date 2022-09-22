@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head> 
-    <!--Cookie stuff-->
-    <script>
-        document.cookie = "domain=http://127.0.0.1:5500/;expires=Fri, 31 Dec 9999 23:59:59 GMT;path=/;SameSite=None; Secure=true";
-    
-    </script>
-    </script>
+<head> <!-- head declaration contains information about the HTML document-->
     <meta name="viewport" content="width=device-width, intial-scale=1.0"> <!--sets the visible area to the width of the device, zoomed at a scale of 1.0-->
     <meta charset="utf-8">
     <title>Transit Tracker</title>
     <!--href values are currently placeholders-->
-    <link rel="icon" type="image/x-icon" href="./packages/leaflet/images/favicon.png">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylecheet" href="sidenav.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
     crossorigin=""/>
@@ -24,55 +18,18 @@
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
     <script type="text/javascript" src="./packages/jquery-3.6.1.min.js"></script>
-   
     
     </head>
    
    <body>
-    <div class="map__container">
-        <h2 class="map__header">Tracking and Info</h2>
-        <div class ="form__button">
-            <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>
-        </div>
-        <div id="map">
-        </div>
-        
-        <div class="form__button-group--train"> 
-            <button class="btn-train" id="trainInfo" type = "submit">SEPTA Regional Rail</button>
+    <div class="sidenav">
+        <div class="agency">
+        <h1 class="form__title">SEPTA</h1>
+            <button class="btn-train" id="trainInfo" type = "submit">Track Regional Rail</button>
             <!--<button class="btn-station" id="stationInfo" type ="submit">Regional Rail Arrivals</button>-->
-            <button class="btn-njt" id="njtRail" type ="submit">New Jersey Transit Rail</button>
-        </div>
-         <div class="form__button-group--trolley">
-             <button class="btn-trolley" id="trolleyInfo" type ="submit">SEPTA Subway-Surface Trolley</button>
-        </div>
-        <div class="form__button-group--train">
-            <div class ="form__select-map">
-                <select name="slct__line" id="slct__line" onchange="this.form.submit()">
-                <option value="">Display Regional Rail Line</option>
-                <option value="Airport">Airport</option>
-                <option value="Chestnut Hill East">Chestnut Hill East</option>
-                <option value="Chestnut Hill West">Chestnut Hill West</option>
-                <option value="Cynwyd">Cynwyd</option>
-                <option value="Fox Chase">Foxchase</option>
-                <option value="Lansdale">Lansdale/Doylestown</option>
-                <option value="Norristown">Manayunk/Norristown</option>
-                <option value="Media">Media/Wawa</option>
-                <option value="Paoli">Paoli/Thorndale</option>
-                <option value="Trenton">Trenton</option>
-                <option value="Warminster">Warminster</option>
-                <option value="Wilmington">Wilmington/Newark</option>
-                <option value="West Trenton">West Trenton</option>
-            </select>"
-        </div>
-        </div>
-    </div>
-    
-    <div class ="schedule">
-        <div class="container-septa">
-            <form class="form form" id="main">
-            <h1 class="form__title">SEPTA Regional Rail Arrivals</h1>
+            <button class="btn-trolley" id="trolleyInfo" type ="submit">Trolley Locations</button>
             <p class="form__text">See Next Five Arrivals At:</p>
-            <div class="form__select">
+                <div class="form__select">
                   <select name="slct__station" id="slct__station" onchange="this.form.submit()">
                     <option value="">Select Station</option>
                     <option value="9th St">9th Street Station</option>
@@ -229,18 +186,42 @@
                     <option value="Wynnewood">Wynnewood Station</option>
                     <option value="Yardley">Yardley Station</option>
                  </select>
+                </div>
+            <p class="form__text">Display by Route</p>
+                <div class ="form__select">
+                    <select name="slct__line" id="slct__line" onchange="this.form.submit()">
+                    <option value="">Display Regional Rail Line</option>
+                    <option value="Airport">Airport</option>
+                    <option value="Chestnut Hill East">Chestnut Hill East</option>
+                    <option value="Chestnut Hill West">Chestnut Hill West</option>
+                    <option value="Cynwyd">Cynwyd</option>
+                    <option value="Fox Chase">Foxchase</option>
+                    <option value="Lansdale">Lansdale/Doylestown</option>
+                    <option value="Norristown">Manayunk/Norristown</option>
+                    <option value="Media">Media/Wawa</option>
+                    <option value="Paoli">Paoli/Thorndale</option>
+                    <option value="Trenton">Trenton</option>
+                    <option value="Warminster">Warminster</option>
+                    <option value="Wilmington">Wilmington/Newark</option>
+                    <option value="West Trenton">West Trenton</option>
+                </select>
             </div>
         </div>
-        <div class="container-njt">
-            <form class="form form" id="njt">
-                <h1 class="form__title">New Jersey Transit Rail Schedule</h1>
-                    <p class="form__text">See Schedule For:</p>
+        <div class="agency">
+        <h1 class="form__title">NJ Transit Rail</h1>
+        <button class="btn-njt" id="njtRail" type ="submit">NJTR Locations</button>
+                <p class="form__text">See Schedule For:</p>
                 <div class="form__select">
                     <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
                     </select>"
                 </div>
-            </form>
         </div>
+        <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>
+    </div>
+    <div class="main" id="map">
+    </div>
+    </div>
+          
     </div>
             <div class="showErrors"></div>
             <div class="showSchedule"></div>
@@ -254,4 +235,5 @@
    
    <script src="./main.js"></script>
    <script src="./display_helper.js"></script>
+   <script src="./map.js"></script></script>
    </html>
