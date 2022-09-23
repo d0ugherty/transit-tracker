@@ -28,19 +28,22 @@ function displayTrainCurrentLoc(item,icon, trainLayer) {
   }
   
   
-  function displayTrolleyLoc(item) {
-
-    console.log(item[0].destination);
+  function displayTrolleyLoc(item,route) {
     let trolleyIcon = L.icon({
         iconUrl: './packages/leaflet/images/trolley1.png',
         iconSize: [20, 20]
     });
-    let trolleyMarker = L.marker([item[0].lat, item[0].lng], {
-        icon: trolleyIcon
-    }).addTo(trolleyLayer);
-    trolleyMarker.bindPopup(`<b><h> Route ${item[0].route}</b><br>` + `Vehicle: ${item[0].vehicleID}<br>` +
-       `Next Stop: ${item[0].next_stop_name}<br>` + `Destination: ${item[0].destination}</h>`);
-  }
+    let jsonData = [];
+    jsonData = item;
+    for(let i = 0; i < jsonData.length; i++){
+        console.log(jsonData[i].VehicleID);
+        let trolleyMarker = L.marker([jsonData[i].lat, jsonData[i].lng], {
+            icon: trolleyIcon
+        }).addTo(trolleyLayer);
+        trolleyMarker.bindPopup(`<b><h> Route ${route}</b><br>` + `<b>Vehicle:</b> ${jsonData[i].VehicleID}<br>` +
+           `<b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>` + `<b>Destination:</b> ${jsonData[i].destination}</h>`);
+    }
+}
   
   
   function displayTrolleyStops(item) {
