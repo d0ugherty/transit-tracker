@@ -24,5 +24,5 @@
   
   let trainIcon = L.icon({
       iconUrl: './packages/leaflet/images/SEPTA_train.png',
-      iconSize: [23, 27 ]
+      iconSize: [23, 27]
   });
