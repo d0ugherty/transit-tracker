@@ -26,12 +26,11 @@
    
    <body>
     <div class="sidenav">
-        <div class="agency">
+        
         <h1 class="form__title">SEPTA Regional Rail</h1>
-            <button class="btn-train" id="trainInfo" type = "submit">Track Regional Rail</button>
             <p class="form__text">Display Line</p>
             <div class ="form__select">
-                <select name="slct__line" id="slct__line" onchange="this.form.submit()">
+                <select name="slct__line" id="slct__line">
                 <option value="">Display Regional Rail Line</option>
                 <option value="Airport">Airport</option>
                 <option value="Chestnut Hill East">Chestnut Hill East</option>
@@ -207,11 +206,11 @@
             <option value="Yardley">Yardley Station</option>
          </select>
         </div>
+        <button class="btn-train" id="trainInfo" type = "submit">Track Regional Rail</button>
             <!--<button class="btn-station" id="stationInfo" type ="submit">Regional Rail Arrivals</button>-->
-        <h1 class="form__title">SEPTA Trolleys</h1>
-            <button class="btn-trolley" id="trolleyInfo" type ="submit">Track Trolley Locations</button>
+        <h1 class="form__title-trolley">SEPTA Trolleys</h1>
             <div class="form__select">
-                <select name="slct__trolley" id="slct__trolley" onchange="this.form.submit()">
+                <select name="slct__trolley" id="slct__trolley">
                     <option value="">Select Route</option>
                     <option value="10">Route 10</option>
                     <option value="11">Route 11</option>
@@ -222,9 +221,9 @@
                     <option value="102">Route 102</option>
                 </select>
             </div>
-
-        </div>
-        <div class="agency">
+            <button class="btn-trolley" id="trolleyInfo" type ="submit">Track Trolley Locations</button>
+      
+        
         <h1 class="form__title">NJ Transit Rail</h1>
         <button class="btn-njt" id="njtRail" type ="submit">NJTR Locations</button>
                 <p class="form__text">See Schedule For:</p>
@@ -232,7 +231,7 @@
                     <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
                     </select>"
                 </div>
-        </div>
+        
         <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>
     </div>
     <div class="main" id="map">
