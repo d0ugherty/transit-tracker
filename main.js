@@ -30,13 +30,6 @@ $(document).ready(function() {
       "https://www3.septa.org/api/Stops/index.php?req1=102"
   ];
   
-  let trolleyLocURLs = ["https://www3.septa.org/api/TransitView/index.php?route=10&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=11&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=15&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=34&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=36&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=101&callback=?",
-                        "https://www3.septa.org/api/TransitView/index.php?route=102&callback=?"]
 
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
@@ -74,25 +67,30 @@ $(document).ready(function() {
   }); //End Train Button Event Handler
 
   $("#trolleyInfo").on('click', function(event) {
-    sendRequest();
-    function sendRequest(){
-        trolleyLayer.clearLayers();
-        $.each(trolleyLocURLs, function(i,u) {
-            $.ajax(u, {
-                type: 'GET',
-                dataType:'jsonp',
-                success: function(data){
-                    $.each(data, function(i,item){
-                        displayTrolleyLoc(item);
-                    });
-                },
-                complete: function() {
-                    setInterval(sendRequest,10000);
-                }
+    let route = $("#slct__trolley option:selected").val();
+    if(route == "" || route == null || route == undefined){
+        alert("Please select a route!");
+    } else {
+            console.log(route);
+            sendRequest(route);
+            function sendRequest(route){
+                let trolleyUrl = `https://www3.septa.org/api/TransitView/index.php?route=${route}`;
+                console.log(trolleyUrl);
+                trolleyLayer.clearLayers();
+            $.ajax({
+                    url: trolleyUrl,
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    success: function(data){
+                        $.each(data, function(i,item,route) {
+                            
+                            displayTrolleyLoc(item,route);
+                        });
+                    }
             });
-        });
-    }
-    $.each(trolleyStopURLs, function(i, u) {
+            }
+        }
+    /**$.each(trolleyStopURLs, function(i, u) {
         $.ajax(u, {
                 type: 'GET',
                 dataType: 'jsonp',
@@ -102,7 +100,7 @@ $(document).ready(function() {
                     });
                 }
             });
-    });
+    });**/
     event.preventDefault();
   }); //End Trolley Button Event Handler
 
