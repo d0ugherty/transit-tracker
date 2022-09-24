@@ -30,7 +30,8 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 
 3. New Jersey Transit stuff (learn how to process GTFS data)
 4. Visualize vehicle's directional heading
-5. Display map markers by route
-6. toggle
-7. Display station schedules/arrivals
-8. Add styling for input errors
+~~5. Display map markers by trolley route~~
+6. Display map markers by regional rail line
+7. toggle
+8. Display station schedules/arrivals
+9. Add styling for input errors
