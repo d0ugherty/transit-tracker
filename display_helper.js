@@ -47,14 +47,15 @@ function displayTrainCurrentLoc(item,icon, trainLayer) {
   
   
   function displayTrolleyStops(item) {
-    let stationMarker = L.circleMarker([item.lat, item.lng], {
+  let stationMarker = L.circleMarker([item.lat, item.lng], {
         color: '#207100',
         weight: 3,
         fillColor: '#cfd9cd',
         fillOpacity: 1.0,
         radius: 6
-    }).addTo(trolleyStopLayer);
-    stationMarker.bindPopup(`<h3>${item.stopname}</h3>`);
+     }).addTo(trolleyStopLayer);
+      stationMarker.bindPopup(`<h3>${item.stopname}</h3>`);
+    
   }
   
   function nextArrival(item) {
