@@ -32,6 +32,7 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 4. Visualize vehicle's directional heading
 
 ~~5. Display map markers by trolley route~~
+
 6. Display map markers by regional rail line
 7. toggle
 8. Display station schedules/arrivals
