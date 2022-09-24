@@ -24,7 +24,7 @@ $(document).ready(function() {
 
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
-    setInterval(getRegionalRailLoc(), 7000);
+    getRegionalRailLoc()
     getRegionalRailStations(railStationURLs);
     event.preventDefault();
   }); //End Train Button Event Handler
@@ -34,7 +34,7 @@ $(document).ready(function() {
     if(route == "" || route == null || route == undefined){
         alert("Please select a route!");
     } else {
-        setInterval(getTrolleyLoc(route), 5000);
+        getTrolleyLoc(route);
         getTrolleyStops(route);
         event.preventDefault();
     }
@@ -47,3 +47,14 @@ $("#njtRail").on('click', function(event){
    //TO DO: finish this
  });
 });
+
+function setInputError(inputElement, message) {
+    inputElement.classList.add("form__input--error");
+    inputElement.classList.remove("form__input--success");
+    inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
+}
+
+function clearInputError(inputElement) {
+    inputElement.classList.remove("form__input--error");
+    inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+}
