@@ -30,7 +30,7 @@ body {
     top: 0;
     left: 0;
     background:#2f2f2f;
-    overflow-x: hidden;
+    overflow-x: scroll;
     padding-top: 20px;
   }
   
