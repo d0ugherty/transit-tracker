@@ -167,7 +167,7 @@ select::-ms-expand {
 
 
 
-.form__input--error {
+.form__select--error {
     color: var(--color-error-text);
     border-color: var(--color-error-text);
     background-color:var(--color-error);
