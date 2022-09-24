@@ -1,4 +1,7 @@
-
+/**
+ * 
+ * 
+ */
 
 //SEPTA Regional Rail train location tracking
 function getRegionalRailLoc(){
@@ -35,25 +38,21 @@ function getRegionalRailStations(railStationURLs){
 
 //SEPTA Subway-surface trolley location tracking
 function getTrolleyLoc(route){
-    if(route == "" || route == null || route == undefined){
-        alert("Please select a route!");
-    } else {
-        let trolleyUrl = `https://www3.septa.org/api/TransitView/index.php?route=${route}`;
-            $.ajax({
-                    url: trolleyUrl,
-                    type: 'GET',
-                    dataType: 'jsonp',
-                    success: function(data){
-                        trolleyLayer.clearLayers();
-                        $.each(data, function(i,item) {
-                            displayTrolleyLoc(item,route);
-                        });
-                    },
-                    //complete: function(){
-                    //setInterval(sendRequest, 5000);
-             //}
-        });
-    }
+    let trolleyUrl = `https://www3.septa.org/api/TransitView/index.php?route=${route}`;
+    $.ajax({
+        url: trolleyUrl,
+        type: 'GET',
+        dataType: 'jsonp',
+        success: function(data){
+            trolleyLayer.clearLayers();
+            $.each(data, function(i,item) {
+                displayTrolleyLoc(item,route);
+            });
+        },
+        complete: function(){
+        setInterval(getTrolleyLoc(route), 5000);
+        }
+    });
 }
 
 //SEPTA Subway-surface trolley stop marking
