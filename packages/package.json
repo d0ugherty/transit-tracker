@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "gtfs-realtime-bindings": "^0.0.6",
+    "gtfs-utils": "^5.1.0"
+  }
+}
