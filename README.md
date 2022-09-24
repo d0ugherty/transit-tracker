@@ -33,3 +33,4 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 5. Display map markers by route
 6. toggle
 7. Display station schedules/arrivals
+8. Add styling for input errors
