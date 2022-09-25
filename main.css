@@ -20,6 +20,7 @@ body {
     font-size: 12px;
    /* background: var(--color-primary-dark);*/
     background-size: cover;
+    overflow-x: hidden;
 }
 .sidenav {
     justify-content:left;
@@ -56,7 +57,7 @@ body {
   }
 #map { 
     height:100%;
-    width: 100%;
+    width: 87%;
     margin-top: 0;
     margin-bottom:0; 
     margin-left:1;
@@ -212,7 +213,7 @@ select::-ms-expand {
     width: 75%;
     padding: 10px;
     font-size: 1rem;
-    color: var(--color-regional-rail-secondary);
+    color: #ffffffff;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
@@ -228,7 +229,7 @@ select::-ms-expand {
     width: 75%;
     padding: 10px;
     font-size: 1rem;
-    color: var(--color-regional-rail-secondary);
+    color: #ffffffff;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
@@ -244,7 +245,7 @@ select::-ms-expand {
     margin-bottom: 1rem;
     padding: 10px;
     font-size: 1rem;
-    color: var(--color-trolley-secondary);
+    color: #ffffff;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
