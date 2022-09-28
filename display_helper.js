@@ -11,8 +11,9 @@ function displayTrainCurrentLoc(item,icon, trainLayer) {
         icon: icon
     }).addTo(trainLayer);
     trainLayer.addTo(map);
-    trainMarker.bindPopup(`<b><h3>Train No. </b> ${trainNumber}<br>` + `<b>Next Stop: </b> ${item.nextstop} <br>` 
-                          + `<b>Line: </b> ${item.line}<br>` + `<b> Destination: </b> ${item.dest}</h3>`);
+    let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent((`<b>Train No. </b> ${trainNumber}<br>` + `<b>Next Stop: </b> ${item.nextstop} <br>` 
+    + `<b>Line: </b> ${item.line}<br>` + `<b> Destination: </b> ${item.dest}`));
+    trainMarker.bindPopup(popup);
 
 }
   
