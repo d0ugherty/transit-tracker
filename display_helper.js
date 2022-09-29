@@ -5,7 +5,7 @@
 * >     Trolleys - IN PROGRESS
 *
 */
-function displayTrainCurrentLoc(item, icon, trainLayer) {
+function displayTrainCurrentLoc(item, trainLayer, icon) {
     let trainNumber = item.trainno;
     let trainMarker = L.marker([item.lat, item.lon], {
         icon: icon
@@ -30,16 +30,13 @@ function displayTrainCurrentLoc(item, icon, trainLayer) {
   }
   
   
-  function displayTrolleyLoc(item, route, trolleyLayer) {
-    let trolleyIcon = L.icon({
-        iconUrl: './packages/leaflet/images/SEPTATrolleytrans.png',
-        iconSize: [30, 30]
-    });
+  function displayTrolleyLoc(item, route, trolleyLayer, icon) {
+
     let jsonData = [];
     jsonData = item;
     for(let i = 0; i < jsonData.length; i++){
         let trolleyMarker = L.marker([jsonData[i].lat, jsonData[i].lng], {
-            icon: trolleyIcon
+            icon: icon
         });
         let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<b><h> Route ${route}</b><br>` + `<b>Vehicle:</b> ${jsonData[i].VehicleID}<br>` +
         `<b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>` + `<b>Destination:</b> ${jsonData[i].destination}</h>`);
