@@ -1,8 +1,3 @@
-/**
- * 
- * 
- */
-
 //SEPTA Regional Rail train location tracking
 function getRegionalRailLoc(){
     $.ajax({
@@ -12,7 +7,7 @@ function getRegionalRailLoc(){
         success: function(data) {
             trainLayer.clearLayers();
             $.each(data, function(i, item) {
-            displayTrainCurrentLoc(item, trainIcon, trainLayer);
+            displayTrainCurrentLoc(item, trainLayer, trainIcon);
             });
           },
           complete: function(){
@@ -44,13 +39,13 @@ function getTrolleyLoc(route){
         type: 'GET',
         dataType: 'jsonp',
         success: function(data){
-            trolleyLayer.clearLayers();
             $.each(data, function(i,item) {
-                displayTrolleyLoc(item,route);
+                trolleyLayer.clearLayers();
+                displayTrolleyLoc(item,route, trolleyLayer, trolleyIcon);
             });
         },
         complete: function(){
-        setInterval(getTrolleyLoc(route), 5000);
+        setInterval(getTrolleyLoc(route), 2000);
         }
     });
 }
