@@ -1,4 +1,3 @@
-
 body {
     --color-primary: #3e3b40;
     --color-primary-dark: #353435;
@@ -39,7 +38,7 @@ body {
     padding: 6px 6px 6px 32px;
     text-decoration: none;
     font-size: 18px;
-    color: var(--color-regional-rail-secondary);
+    color: #fff;
     display: block;
   }
   
@@ -67,7 +66,7 @@ body {
 
 .form__title {
     font-size: 16px;
-    color: var(--color-regional-rail-secondary);
+    color: #ffffff;
     margin-top: 2rem;
     margin-bottom: 5px;
     text-align: left;
