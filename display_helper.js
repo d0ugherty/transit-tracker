@@ -5,7 +5,7 @@
 * >     Trolleys - IN PROGRESS
 *
 */
-function displayTrainCurrentLoc(item,icon, trainLayer) {
+function displayTrainCurrentLoc(item, icon, trainLayer) {
     let trainNumber = item.trainno;
     let trainMarker = L.marker([item.lat, item.lon], {
         icon: icon
@@ -25,24 +25,26 @@ function displayTrainCurrentLoc(item,icon, trainLayer) {
         fillOpacity: 1.0,
         radius: 7
     }).addTo(stationLayer);
-    stationMarker.bindPopup(`<h3>${item.location_name}</h3>`);
+    let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<h3>${item.location_name}</h3>`);
+    stationMarker.bindPopup(popup);
   }
   
   
-  function displayTrolleyLoc(item,route) {
+  function displayTrolleyLoc(item, route, trolleyLayer) {
     let trolleyIcon = L.icon({
-        iconUrl: './packages/leaflet/images/trolley1.png',
-        iconSize: [20, 20]
+        iconUrl: './packages/leaflet/images/SEPTATrolleytrans.png',
+        iconSize: [30, 30]
     });
     let jsonData = [];
     jsonData = item;
     for(let i = 0; i < jsonData.length; i++){
-        console.log(jsonData[i].VehicleID);
         let trolleyMarker = L.marker([jsonData[i].lat, jsonData[i].lng], {
             icon: trolleyIcon
-        }).addTo(trolleyLayer);
-        trolleyMarker.bindPopup(`<b><h> Route ${route}</b><br>` + `<b>Vehicle:</b> ${jsonData[i].VehicleID}<br>` +
-           `<b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>` + `<b>Destination:</b> ${jsonData[i].destination}</h>`);
+        });
+        let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<b><h> Route ${route}</b><br>` + `<b>Vehicle:</b> ${jsonData[i].VehicleID}<br>` +
+        `<b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>` + `<b>Destination:</b> ${jsonData[i].destination}</h>`);
+        trolleyMarker.addTo(trolleyLayer);
+        trolleyMarker.bindPopup(popup);
     }
 }
   
@@ -55,7 +57,8 @@ function displayTrainCurrentLoc(item,icon, trainLayer) {
         fillOpacity: 1.0,
         radius: 6
      }).addTo(trolleyStopLayer);
-      stationMarker.bindPopup(`<h3>${item.stopname}</h3>`);
+     let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<b><h3>${item.stopname}</h3></b>`);
+     stationMarker.bindPopup(popup);
     
   }
   
