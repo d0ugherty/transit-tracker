@@ -11,7 +11,8 @@
     layers: [
         L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'),
         L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png')
-      ]
+      ],
+      tap: false
   });
   
   map.attributionControl.addAttribution('Data <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>'+ 
@@ -23,6 +24,11 @@
   let trolleyStopLayer = L.layerGroup().addTo(map);
   
   let trainIcon = L.icon({
-      iconUrl: './packages/leaflet/images/SEPTA_train.png',
-      iconSize: [23, 27]
+      iconUrl: './packages/leaflet/images/SEPTARegionalRail-bw.png',
+      iconSize: [30, 30]
   });
+
+  let trolleyIcon = L.icon({
+    iconUrl: './packages/leaflet/images/SEPTATrolleytrans.png',
+    iconSize: [30, 30]
+});
