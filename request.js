@@ -31,6 +31,20 @@ function getRegionalRailStations(railStationURLs){
           });
     }
 
+function getRegionalRailArrivals(station){
+    //code goes here
+    $.ajax({
+        url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=5`,
+        type: 'GET',
+        dataType: 'jsonp',
+        success: function(data){
+            $.each(data, function(i, item){
+                arrivalsBoard(item);
+            });
+        }
+    });
+}
+
 //SEPTA Subway-surface trolley location tracking
 function getTrolleyLoc(route){
     let trolleyUrl = `https://www3.septa.org/api/TransitView/index.php?route=${route}`;
