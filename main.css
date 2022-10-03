@@ -52,11 +52,11 @@ body {
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: 12px;}
   }
 #map { 
     height:100%;
-    width: 87%;
+    width: 84%;
     margin-top: 0;
     margin-bottom:0; 
     margin-left:1;
@@ -67,7 +67,7 @@ body {
 .form__title {
     font-size: 16px;
     color: #ffffff;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     margin-bottom: 5px;
     text-align: left;
     background: var(--color-regional-rail);
@@ -78,7 +78,7 @@ body {
 .form__text {
     font-family: 'Roboto Mono', monospace;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 12px;
 }
 ::placeholder {
     color: var(--color-primary);
@@ -112,7 +112,14 @@ select {
     outline: 2;
     background: var(--color-background);
     background-image: none;
+    font-size: 12px;
     border: 1px solid var(--color-regional-rail-secondary);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 .5em;
+    color: #fff;
+    cursor: pointer;
 }
 
  
@@ -122,21 +129,14 @@ select {
     width: 20em;
     height: 3em;
     line-height: 3;
+
     background: var(--color-background);
     overflow: hidden;
     border: var(--border-radius);
     border-color:var(--color-regional-rail-secondary);
 }
 
-select {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0 0 0 .5em;
-    color: #fff;
-    cursor: pointer;
-}
- 
+
 select::-ms-expand {
     display: none;
     
@@ -145,6 +145,7 @@ select::-ms-expand {
 .form__select::after {
     content: '\25BC';
     position: absolute;
+    height: 3em;
     top: 0;
     right: 0;
     bottom: 0;
@@ -204,7 +205,7 @@ select::-ms-expand {
     text-decoration: underline;
 }
 
-.btn-train {
+.btn-train,.btn-station {
     margin-top: 1rem;
     margin-right: 1rem;
     margin-left: 1rem;
