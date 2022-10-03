@@ -59,7 +59,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     
   }
   
-  function nextArrival(item) {
-  
+  function arrivalsBoard(item) {
+    //To-Do: Finish this
   }
   
