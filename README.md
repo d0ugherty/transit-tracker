@@ -23,17 +23,14 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 
 
 ## TO DO:
+fix trolley icon flickering after selecting a new route
 
-~~1. Subway-Surface Trolley Locations~~
+New Jersey Transit stuff (learn how to process GTFS data)
+ 
+Visualize vehicle's directional heading
 
-~~2. Fix icon flickering~~
+Display map markers by regional rail line
 
-3. New Jersey Transit stuff (learn how to process GTFS data)
-4. Visualize vehicle's directional heading
+Display station schedules/arrivals
 
-~~5. Display map markers by trolley route~~
-
-6. Display map markers by regional rail line
-7. toggle
-8. Display station schedules/arrivals
-9. Add styling for input errors
+Add styling for input errors
