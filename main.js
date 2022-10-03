@@ -29,6 +29,16 @@ $(document).ready(function() {
     event.preventDefault();
   }); //End Train Button Event Handler
 
+  $("#arrivals").on('click', function(event) {
+    let station = $("#slct__station option:selected").val();
+    if(station =="" || station == null || station == undefined){
+      alert("Please select station!");
+    } else {
+      getRegionalRailArrivals(station);
+      event.preventDefault();
+    }
+  })
+
   $("#trolleyInfo").on('click', function(event) {
     let route = $("#slct__trolley option:selected").val();
     if(route == "" || route == null || route == undefined){
