@@ -54,13 +54,18 @@ body {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 12px;}
   }
-#map { 
-    height:100%;
-    width: 84%;
-    margin-top: 0;
-    margin-bottom:0; 
-    margin-left:1;
-    margin-right:0;
+#map {
+    background-color: #f1eee8;
+    color: black;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border-left: 1px solid black;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: var(--color-regional-rail);
 }
 
 
