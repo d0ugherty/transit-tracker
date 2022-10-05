@@ -233,15 +233,10 @@
                     </select>"
                 </div>
         
-        <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>
-        <button type="button" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#myModal">
-            Open modal
-          </button>       
+        <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>       
          
 
     </div> <!--End Side navigation-->
-    <!--The Map-->
-    <div class="main" id="map"></div>
 
     <!--Modal Table for Arrivals and Departuress-->
     <div class="hidden" id="tableContainer">
@@ -254,16 +249,16 @@
                     <a href="#closeTable" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Close</span></a>
                 </div>
             </div>
-        </div>
+        
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Time</th>
-                    <th>Number</th>
-                    <th>Destination</th>
-                    <th>From</th>
-                    <th>Status</th>
-                    <th>Track</th>
+                    <th><h2>Time</h2></th>
+                    <th><h2>Number</h2></th>
+                    <th><h2>Destination</h2></th>
+                    <th><h2>From</h2></th>
+                    <th><h2>Status</h2></th>
+                    <th><h2>Track</h2></th>
                 </tr>
             </thead>
             <tbody>
@@ -271,7 +266,11 @@
             </tbody>
         </table>
     </div>
+    </div>
    
+      <!--The Map-->
+      <div class="main" id="map"></div>
+
    </body>
    
    <script src="./main.js"></script>
