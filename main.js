@@ -34,10 +34,12 @@ $(document).ready(function() {
     if(station =="" || station == null || station == undefined){
       alert("Please select station!");
     } else {
+        $('#tableContainer').css("display","block");
+   
       getRegionalRailArrivals(station);
       event.preventDefault();
     }
-  })
+  });
 
   $("#trolleyInfo").on('click', function(event) {
     let route = $("#slct__trolley option:selected").val();
