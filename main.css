@@ -288,7 +288,8 @@ select::-ms-expand {
     transform: scale(0.90);
     transition-timing-function:linear;
 }
-
-.showTrains{
-    color: var(--color-text);
+/*modal table*/
+.hidden
+{
+    display: none;
 }
