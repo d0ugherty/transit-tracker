@@ -59,25 +59,34 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     
   }
   
-  function loadBoard(item) {
+  function loadBoard(item, optText) {
     //To-Do: Finish this
     let jsonData = [];
     jsonData = item;
     //console.log(jsonData[0].Southbound[0].train_id);
+    $('#boardTitle').html('<h2><b> Train Information: ' + optText + '</h2></b>');
     for(let i = 0; i < jsonData.length; i++){
       if(jsonData[i].Northbound != undefined){
         for(let j = 0; j < jsonData[i].Northbound.length; j++){
-          let row = $('<tr><td>' + jsonData[i].Northbound[j].depart_time + '</td><td>' + jsonData[i].Northbound[j].train_id + '</td><td>' + jsonData[i].Northbound[j].line + '</td><td>' 
-                  + jsonData[i].Northbound[j].destination + '</td><td>' + jsonData[i].Northbound[j].origin + '</td><td>' 
-                  + jsonData[i].Northbound[j].status + '</td><td>' + jsonData[i].Northbound[j].track + '</td>')
+          let row = $('<tr><td>' + jsonData[i].Northbound[j].depart_time + 
+                      '</td><td>' + jsonData[i].Northbound[j].train_id + 
+                      '</td><td>' + jsonData[i].Northbound[j].line + 
+                      '</td><td>' + jsonData[i].Northbound[j].destination + 
+                      '</td><td>' + jsonData[i].Northbound[j].origin + 
+                      '</td><td>' + jsonData[i].Northbound[j].status + 
+                      '</td><td>' + jsonData[i].Northbound[j].track + '</td>');
             $('#departuresTable').append(row);
         }
       if(jsonData[i].Southbound != undefined){
           for(let j = 0; j < jsonData[i].Southbound.length; j++){
-            let row = $('<tr><td>' + jsonData[i].Southbound[j].depart_time + '</td><td>' + jsonData[i].Southbound[j].train_id + '</td><td>' + jsonData[i].Southbound[j].line + '</td><td>' 
-                    + jsonData[i].Southbound[j].destination + '</td><td>' + jsonData[i].Southbound[j].origin + '</td><td>' 
-                    + jsonData[i].Southbound[j].status + '</td><td>' + jsonData[i].Southbound[j].track + '</td>')
-              $('#departuresTable').append(row);
+            let row = $('<tr><td>' + jsonData[i].Southbound[j].depart_time + 
+                      '</td><td>' + jsonData[i].Southbound[j].train_id + 
+                      '</td><td>' + jsonData[i].Southbound[j].line + 
+                      '</td><td>' + jsonData[i].Southbound[j].destination + 
+                      '</td><td>' + jsonData[i].Southbound[j].origin + 
+                      '</td><td>' + jsonData[i].Southbound[j].status + 
+                      '</td><td>' + jsonData[i].Southbound[j].track + '</td>');
+            $('#departuresTable').append(row);
           }
         }
       }
