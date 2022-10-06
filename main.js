@@ -34,8 +34,9 @@ $(document).ready(function() {
     if(station =="" || station == null || station == undefined){
       alert("Please select station!");
     } else {
-        $('#tableContainer').css("display","block");
-   
+      $('#departuresTable tbody').empty();
+      $('#tableContainer').css("display","block");
+
       getRegionalRailArrivals(station);
       event.preventDefault();
     }
@@ -58,6 +59,8 @@ $("#clear").on('click', function(event){
 $("#njtRail").on('click', function(event){
    //TO DO: finish this
  });
+
+ 
 });
 
 function setInputError(inputElement, message) {
