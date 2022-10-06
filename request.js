@@ -34,7 +34,7 @@ function getRegionalRailStations(railStationURLs){
 function getRegionalRailArrivals(station, optText){
     //code goes here
     $.ajax({
-        url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=5`,
+        url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=10`,
         type: 'GET',
         dataType: 'jsonp',
         success: function(data){
