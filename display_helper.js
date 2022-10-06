@@ -67,7 +67,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     $('#boardTitle').html('<h2><b> Train Information: ' + optText + '</h2></b>');
     for(let i = 0; i < jsonData.length; i++){
       if(jsonData[i].Northbound != undefined){
-        for(let j = 0; j < jsonData[i].Northbound.length; j++){
+        for(let j = 0; j < 3; j++){
           let row = $('<tr><td>' + jsonData[i].Northbound[j].depart_time + 
                       '</td><td>' + jsonData[i].Northbound[j].train_id + 
                       '</td><td>' + jsonData[i].Northbound[j].line + 
@@ -77,8 +77,11 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
                       '</td><td>' + jsonData[i].Northbound[j].track + '</td>');
             $('#departuresTable').append(row);
         }
-      if(jsonData[i].Southbound != undefined){
-          for(let j = 0; j < jsonData[i].Southbound.length; j++){
+      }
+    }
+    for(let i = 0; i < jsonData.length; i++){
+        if(jsonData[i].Southbound != undefined){
+          for(let j = 0; j < 3; j++){
             let row = $('<tr><td>' + jsonData[i].Southbound[j].depart_time + 
                       '</td><td>' + jsonData[i].Southbound[j].train_id + 
                       '</td><td>' + jsonData[i].Southbound[j].line + 
@@ -91,5 +94,5 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
         }
       }
     }
-  }
+  
   
