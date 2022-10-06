@@ -43,6 +43,10 @@ $(document).ready(function() {
     }
   });
 
+  $('#btnCloseTable').on('click', function() {
+    $('#tableContainer').hide();
+  });
+
   $("#trolleyInfo").on('click', function(event) {
     let route = $("#slct__trolley option:selected").val();
     if(route == "" || route == null || route == undefined){
