@@ -31,13 +31,14 @@ $(document).ready(function() {
 
   $("#arrivals").on('click', function(event) {
     let station = $("#slct__station option:selected").val();
+    let optText = $('#slct__station option:selected').text();
     if(station =="" || station == null || station == undefined){
       alert("Please select station!");
     } else {
       $('#departuresTable tbody').empty();
       $('#tableContainer').css("display","block");
 
-      getRegionalRailArrivals(station);
+      getRegionalRailArrivals(station, optText);
       event.preventDefault();
     }
   });
