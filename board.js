@@ -38,12 +38,9 @@ function loadBoard(item, optText) {
       }
     }
   
-  function arrivalTime(timeString){
+function arrivalTime(timeString){
     let date = new Date(timeString);
 
-   return date.toLocaleTimeString('en-US',{
-      hour:'numeric',
-      minute:'numeric'
-    });
+   return date.toLocaleTimeString('en-US',{hour:'numeric',minute:'numeric'});
   }
   
