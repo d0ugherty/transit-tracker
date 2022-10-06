@@ -16,7 +16,7 @@ function loadBoard(item, optText) {
                       '</td><td>' + jsonData[i].Northbound[j].line + 
                       '</td><td>' + jsonData[i].Northbound[j].destination + 
                       '</td><td>' + jsonData[i].Northbound[j].origin + 
-                      '</td><td>' + jsonData[i].Northbound[j].status + 
+                      '</td><td>' + isLate(jsonData[i].Northbound[j].status) + 
                       '</td><td>' + jsonData[i].Northbound[j].track + '</td>');
             $('#departuresTable').append(row);
         }
@@ -30,7 +30,7 @@ function loadBoard(item, optText) {
                       '</td><td>' + jsonData[i].Southbound[j].line + 
                       '</td><td>' + jsonData[i].Southbound[j].destination + 
                       '</td><td>' + jsonData[i].Southbound[j].origin + 
-                      '</td><td>' + jsonData[i].Southbound[j].status + 
+                      '</td><td>' + isLate(jsonData[i].Southbound[j].status) + 
                       '</td><td>' + jsonData[i].Southbound[j].track + '</td>');
             $('#departuresTable').append(row);
           }
@@ -42,5 +42,13 @@ function arrivalTime(timeString){
     let date = new Date(timeString);
 
    return date.toLocaleTimeString('en-US',{hour:'numeric',minute:'numeric'});
+  }
+
+  function isLate(status){
+    if(status == 'On Time'){
+      return status;
+    }else{
+      return `<span style="color:yellow">${status} LATE</span>`;
+    }
   }
   
