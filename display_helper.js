@@ -1,7 +1,8 @@
+const { defaultMaxListeners } = require("events");
 
 /*
 * Functions to display map markers for vehicles and stations/stops
-* >     Regional Rail - DONE
+* >     TO DO: Fix Time format for departure board
 * >     Trolleys - IN PROGRESS
 *
 */
@@ -68,7 +69,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     for(let i = 0; i < jsonData.length; i++){
       if(jsonData[i].Northbound != undefined){
         for(let j = 0; j < 3; j++){
-          let row = $('<tr><td>' + jsonData[i].Northbound[j].depart_time + 
+          let row = $('<tr><td>' + arrivalTime(jsonData[i].Northbound[j].depart_time) + 
                       '</td><td>' + jsonData[i].Northbound[j].train_id + 
                       '</td><td>' + jsonData[i].Northbound[j].line + 
                       '</td><td>' + jsonData[i].Northbound[j].destination + 
@@ -82,7 +83,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     for(let i = 0; i < jsonData.length; i++){
         if(jsonData[i].Southbound != undefined){
           for(let j = 0; j < 3; j++){
-            let row = $('<tr><td>' + jsonData[i].Southbound[j].depart_time + 
+            let row = $('<tr><td>' + arrivalTime(jsonData[i].Southbound[j].depart_time) + 
                       '</td><td>' + jsonData[i].Southbound[j].train_id + 
                       '</td><td>' + jsonData[i].Southbound[j].line + 
                       '</td><td>' + jsonData[i].Southbound[j].destination + 
@@ -95,4 +96,12 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
       }
     }
   
+  function arrivalTime(timeString){
+    let date = new Date(timeString);
+
+   return date.toLocaleTimeString('en-US',{
+      hour:'numeric',
+      minute:'numeric'
+    });
+  }
   
