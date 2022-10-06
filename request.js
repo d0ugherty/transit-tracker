@@ -39,7 +39,7 @@ function getRegionalRailArrivals(station){
         dataType: 'jsonp',
         success: function(data){
             $.each(data, function(i, item){
-                arrivalsBoard(item);
+                loadBoard(item);
             });
         }
     });
