@@ -31,7 +31,7 @@ function getRegionalRailStations(railStationURLs){
           });
     }
 
-function getRegionalRailArrivals(station){
+function getRegionalRailArrivals(station, optText){
     //code goes here
     $.ajax({
         url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=5`,
@@ -39,7 +39,7 @@ function getRegionalRailArrivals(station){
         dataType: 'jsonp',
         success: function(data){
             $.each(data, function(i, item){
-                loadBoard(item);
+                loadBoard(item, optText);
             });
         }
     });
