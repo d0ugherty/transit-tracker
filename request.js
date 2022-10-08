@@ -62,7 +62,7 @@ function getTrolleyLoc(route){
             });
         },
         complete: function(){
-        setInterval(getTrolleyLoc(route), 2000);
+        setInterval(`getTrolleyLoc(${route})`, 2000);
         }
     });
 }
