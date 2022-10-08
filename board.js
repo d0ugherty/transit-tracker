@@ -5,11 +5,8 @@
 
 /** Begin Board Generation**/
 function loadBoard(item, optText) {
-  //To-Do: Finish this
-  //$('#departuresTable tbody').empty();
   let jsonData = [];
   jsonData = item;
-  //console.log(jsonData[0].Southbound[0].train_id);
   $('#boardTitle').html('<h2><b> Train Information: ' + optText + '</h2></b>');
   for(let i = 0; i < jsonData.length; i++){
     if(jsonData[i].Northbound != undefined){
@@ -43,17 +40,13 @@ function loadBoard(item, optText) {
 /**Text formatting functions**/  
 function arrivalTime(timeString){
   let date = new Date(timeString);
-
   return date.toLocaleTimeString('en-US',{hour:'numeric',minute:'numeric'});
 }
 
 function isLate(status){
-  if(status == 'On Time'){
-    return status;
-  }else{
-    return `<span style="color:yellow">${status} LATE</span>`;
-  }
+   return (status == 'On Time')? status : `<span style="color:yellow">${status} LATE</span>`;
 }
+
 
 /**Board Event Listeners**/
 $('#btnCloseTable').on('click', function() {
