@@ -10,8 +10,12 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
         icon: icon
     }).addTo(trainLayer);
     trainLayer.addTo(map);
-    let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent((`<b>Train No. </b> ${trainNumber}<br>` + `<b>Next Stop: </b> ${item.nextstop} <br>` 
-    + `<b>Line: </b> ${item.line}<br>` + `<b> Destination: </b> ${item.dest}`));
+    let popup = L.popup({
+              "autoClose": false, 
+              "closeOnClock": null}).setContent((`<b>Train No. </b> ${trainNumber}<br>
+              <b>Next Stop: </b> ${item.nextstop} <br>
+              <b>Line: </b> ${item.line}<br>
+              <b> Destination: </b> ${item.dest}`));
     trainMarker.bindPopup(popup);
   }
   
@@ -34,8 +38,10 @@ function displayStationLoc(item) {
         let trolleyMarker = L.marker([jsonData[i].lat, jsonData[i].lng], {
             icon: icon
         });
-        let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<b><h> Route ${route}</b><br>` + `<b>Vehicle:</b> ${jsonData[i].VehicleID}<br>` +
-        `<b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>` + `<b>Destination:</b> ${jsonData[i].destination}</h>`);
+        let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent(`<b><h> Route ${route}</b><br>
+        <b>Vehicle:</b> ${jsonData[i].VehicleID}<br>
+        <b>Next Stop:</b> ${jsonData[i].next_stop_name}<br>
+        <b>Destination:</b> ${jsonData[i].destination}</h>`);
         trolleyMarker.addTo(trolleyLayer);
         trolleyMarker.bindPopup(popup);
     }
