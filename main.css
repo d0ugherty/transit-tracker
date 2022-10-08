@@ -344,9 +344,7 @@ float: right;
 }
 
 .table-title .btn {
-background: rgba(227, 27, 27, 0.778);
 color: #fff;
-float: right;
 font-size: 14px;
 border: none;
 min-width: 50px;
@@ -355,12 +353,25 @@ outline: none !important;
 margin-left: 10px;
 margin-top: -30px;
 }
+.btn-danger {
+    background: rgba(227, 27, 27, 0.778);
+    float: right;
+}
+.btn-refresh {
+    background: rgba(15, 123, 212, 0.726);
+    float: left;
+}
 
 .table-title .btn:active{
-    background: rgb(255, 87, 87);
     transition: 0.2s;
     transform: scale(0.90);
     transition-timing-function:linear;
+}
+.table-title .btn-refresh:active {
+    background: rgb(40, 152, 244);
+}
+.table-title .btn-danger:active {
+    background: rgb(255, 87, 87);
 }
 
 
