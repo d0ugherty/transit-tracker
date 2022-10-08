@@ -11,7 +11,7 @@ function getRegionalRailLoc(){
             });
           },
           complete: function(){
-            setInterval(getRegionalRailLoc, 5000);
+            setTimeout(getRegionalRailLoc, 5000);
           }
       });
 }
@@ -31,19 +31,22 @@ function getRegionalRailStations(railStationURLs){
           });
     }
 
-function getRegionalRailArrivals(station, optText){
-    //code goes here
+function getArrivals(station, optText){
     $.ajax({
         url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=10`,
         type: 'GET',
         dataType: 'jsonp',
         success: function(data){
+            $('#departuresTable tbody').empty();
             $.each(data, function(i, item){
                 loadBoard(item, optText);
             });
+        },
+        complete: function(){
+            setTimeout(getArrivals, 5000);
         }
-    });
-}
+     });
+    }
 
 //SEPTA Subway-surface trolley location tracking
 function getTrolleyLoc(route){
