@@ -35,16 +35,11 @@ $(document).ready(function() {
     if(station =="" || station == null || station == undefined){
       alert("Please select station!");
     } else {
-      $('#departuresTable tbody').empty();
       $('#tableContainer').css("display","block");
 
-      getRegionalRailArrivals(station, optText);
+      getArrivals(station, optText);
       event.preventDefault();
     }
-  });
-
-  $('#btnCloseTable').on('click', function() {
-    $('#tableContainer').hide();
   });
 
   $("#trolleyInfo").on('click', function(event) {
