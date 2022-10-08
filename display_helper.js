@@ -5,19 +5,18 @@
 * >          
 */
 function displayTrainCurrentLoc(item, trainLayer, icon) {
-    let trainNumber = item.trainno;
-    let trainMarker = L.marker([item.lat, item.lon], {
+  let trainNumber = item.trainno;
+  let trainMarker = L.marker([item.lat, item.lon], {
         icon: icon
     }).addTo(trainLayer);
     trainLayer.addTo(map);
     let popup = L.popup({"autoClose": false, "closeOnClock": null}).setContent((`<b>Train No. </b> ${trainNumber}<br>` + `<b>Next Stop: </b> ${item.nextstop} <br>` 
     + `<b>Line: </b> ${item.line}<br>` + `<b> Destination: </b> ${item.dest}`));
     trainMarker.bindPopup(popup);
-
-}
+  }
   
-  function displayStationLoc(item) {
-    let stationMarker = L.circleMarker([item.location_lat, item.location_lon], {
+function displayStationLoc(item) {
+  let stationMarker = L.circleMarker([item.location_lat, item.location_lon], {
         color: '#2C3E50',
         weight: 5,
         fillColor: '#c9d3d9',
@@ -28,11 +27,9 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
     stationMarker.bindPopup(popup);
   }
   
-  
-  function displayTrolleyLoc(item, route, trolleyLayer, icon) {
-
-    let jsonData = [];
-    jsonData = item;
+ function displayTrolleyLoc(item, route, trolleyLayer, icon) {
+  let jsonData = [];
+  jsonData = item;
     for(let i = 0; i < jsonData.length; i++){
         let trolleyMarker = L.marker([jsonData[i].lat, jsonData[i].lng], {
             icon: icon
@@ -43,9 +40,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
         trolleyMarker.bindPopup(popup);
     }
 }
-  
-  
-  function displayTrolleyStops(item) {
+function displayTrolleyStops(item) {
   let stationMarker = L.circleMarker([item.lat, item.lng], {
         color: '#207100',
         weight: 3,
