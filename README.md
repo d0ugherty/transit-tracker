@@ -7,10 +7,10 @@ Using the Leaflet JavaScript library for map functionality.
 For the map itself, using Stadia Maps' Alidade Smooth Dark for the base layer map tiles overlaid with Open Railway Maps
 to emphasize rai infrastructure.
 
-![map](https://github.com/sauce-picante/transit-tracker/blob/dev/screenshots/map.png?raw=true)
+![map](https://github.com/sauce-picante/transit-tracker/blob/dev/screenshots/map.png)
 
 10/7/2022: Now includes an arrivals and departrues information board. Time shown on the board is the departure time of the corresponding train.
-![map](https://github.com/sauce-picante/transit-tracker/blob/dev/screenshots/board.png?raw=true)
+![map](https://github.com/sauce-picante/transit-tracker/blob/dev/screenshots/board.png)
 
 SEPTA API documentation: http://www3.septa.org/
 
