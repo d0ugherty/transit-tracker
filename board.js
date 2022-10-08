@@ -24,9 +24,7 @@ function loadBoard(item, optText) {
           $('#departuresTable').append(row);
       }
     }
-  }
-  for(let i = 0; i < jsonData.length; i++){
-      if(jsonData[i].Southbound != undefined){
+   if(jsonData[i].Southbound != undefined){
         for(let j = 0; j < 5; j++){
           let row = $('<tr><td>' + arrivalTime(jsonData[i].Southbound[j].depart_time) + 
                     '</td><td>' + jsonData[i].Southbound[j].train_id + 
