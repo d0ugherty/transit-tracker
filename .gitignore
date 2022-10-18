@@ -1,4 +1,9 @@
 node_modules/
+.vs
 output.txt
 cnnstring.txt
 screenshots/cookies.png
+Server/NJT_RailDataSet.Designer.cs
+Server/NJT_RailDataSet.xss
+Server/NJT_RailDataSet.xsc
+Server/NJT_RailDataSet.xsd
