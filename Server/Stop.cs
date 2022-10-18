@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    internal class Stop
+    public class Stop
     {
-        private int stop_id { get; set; }
-        private int stop_code { get; set; }
-        private string stop_name { get; set; }
-        private string stop_desc { get; set; }
-        private float stop_lat { get; set; }
-        private float stop_lon { get; set; }
-        private int zone_id { get; set; }
+        public int stop_id { get; set; }
+        public int stop_code { get; set; }
+        public string stop_name { get; set; }
+        public string stop_desc { get; set; }
+        public double stop_lat { get; set; }
+        public double stop_lon { get; set; }
+        public int zone_id { get; set; }
     }
 }
