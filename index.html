@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head> <!-- head declaration contains information about the HTML document-->
-    <meta name="viewport" content="width=device-width, intial-scale=1.0"> <!--sets the visible area to the width of the device, zoomed at a scale of 1.0-->
+
+<head>
+    <!-- head declaration contains information about the HTML document-->
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <!--sets the visible area to the width of the device, zoomed at a scale of 1.0-->
     <meta charset="utf-8">
     <title>Transit Tracker</title>
     <link rel="icon" type="image/x-icon" href="./packages/leaflet/images/favicon.png">
     <link rel="stylesheet" href="main.css">
     <link rel="stylecheet" href="sidenav.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,20 +18,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-    crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
     <script type="text/javascript" src="./packages/jquery-3.6.1.min.js"></script>
-    
-    </head>
-   
-   <body>
+
+</head>
+
+<body>
     <div class="sidenav">
-        
+
         <h1 class="form__title">SEPTA Regional Rail</h1>
-            <p class="form__text">Display Line</p>
-            <div class ="form__select">
-                <select name="slct__line" id="slct__line">
+        <p class="form__text">Display Line</p>
+        <div class="form__select">
+            <select name="slct__line" id="slct__line">
                 <option value="">Display Regional Rail Line</option>
                 <option value="Airport">Airport</option>
                 <option value="Chestnut Hill East">Chestnut Hill East</option>
@@ -49,194 +48,195 @@
         </div>
         <p class="form__text">See Arrivals & Departures At:</p>
         <div class="form__select">
-          <select name="slct__station" id="slct__station">
-            <option value="">Select Station</option>
-            <option value="9th St">9th Street Station</option>
-            <option value="30th Street Station">30th Street Station</option>
-            <option value="49th St">49th Street Station</option>
-            <option value="Airport Terminal A">Airport Terminal A</option>
-            <option value="Airport Terminal B">Airport Terminal B</option>
-            <option value="Airport Terminal C-D">Airport Terminal C-D</option>
-            <option value="Airport Terminal E-F">Airport Terminal E-F</option>
-            <option value="Allegheny">Allegheny</option>
-            <option value="Allen Lane">Allen Lane Station</option>
-            <option value="Ambler">Ambler</option>
-            <option value="Angora">Angora</option>
-            <option value="Ardmore">Ardmore</option>
-            <option value="Ardsley">Ardsley</option>
-            <option value="Bala">Bala Station</option>
-            <option value="Berwyn">Berwyn</option>
-            <option value="Bethayres">Bethayres</option>
-            <option value="Bridesburg">Bridesburg</option>
-            <option value="Bridge">Bridgeport</option>
-            <option value="Bristol">Bristol</option>
-            <option value="Bryn Mawr">Bryn Mawr</option>
-            <option value="Carpenter">Carpenter</option>
-            <option value="Chalfont">Chalfont</option>
-            <option value="Chelten Avenue">Chelten Ave. Station</option>
-            <option value="Cheltenham">Cheltenham</option>
-            <option value="Chester TC">Chester Transportation Center</option>
-            <option value="Chestnut Hill East">Chestnut Hill East</option>
-            <option value="Chestnut Hill West">Chestnut Hill West</option>
-            <option value="Claymont">Claymont</option>
-            <option value="Clifton-Aldan">Clifton-Aldan</option>
-            <option value="Colmar">Colmar</option>
-            <option value="Conshohocken">Conshohocken</option>
-            <option value="Cornwells Heights">Cornwells Heights</option>
-            <option value="Crestmont">Crestmont</option>
-            <option value="Croydon">Croydon</option>
-            <option value="Crum Lynne">Crum Lynne</option>
-            <option value="Curtis Park">Curtis Park</option>
-            <option value="Cynwyd">Cynwyd</option>
-            <option value="Daylesford">Dalesford</option>
-            <option value="Darby">Darby</option>
-            <option value="Delaware Valley College">Delaware Valley College</option>
-            <option value="Devon">Devon</option>
-            <option value="Downingtown">Downingtown</option>
-            <option value="Doylestown">Doylestown</option>
-            <option value="East Falls">East Falls</option>
-            <option value="Eastwick Station">Eastwick</option>
-            <option value="Eddington">Eddington</option>
-            <option value="Eddystone">Eddystone</option>
-            <option value="Elkins Park">Elkins Park</option>
-            <option value="Elm St">Elm Street Station</option>
-            <option value="Elwyn Station">Elwyn</option>
-            <option value="Exton">Exton</option>
-            <option value="Fern Rock TC">Fern Rock Transportation Center</option>
-            <option value="Fernwood">Fernwood-Yeadon</option>
-            <option value="Folcroft">Folcroft</option>
-            <option value="Forest Hills">Forest Hills</option>
-            <option value="Ft Washington">Fort Washington</option>
-            <option value="Fortuna">Fortuna</option>
-            <option value="Fox Chase">Fox Chase</option>
-            <option value="Germantown">Germantown</option>
-            <option value="Gladstone">Gladstone</option>
-            <option value="Glenolden">Glenolden</option>
-            <option value="Glenside">Glenside</option>
-            <option value="Gravers">Gravers</option>
-            <option value="Gwynedd Valley">Gwynedd Valley</option>
-            <option value="Hatboro">Hatboro</option>
-            <option value="Haverford">Haverford</option>
-            <option value="Highland Ave">Highland Avenue</option>
-            <option value="Highland">Highland </option>
-            <option value="Holmesburg Jct">Holmesburg Jct.</option>
-            <option value="Ivy Ridge">Ivy Ridge</option>
-            <option value="Market East">Jefferson Station</option>
-            <option value="Jenkintown-Wyncote">Jenkintown</option>
-            <option value="Langhorne">Langhorne</option>
-            <option value="Lansdale">Lansdale</option>
-            <option value="Lansdowne">Lansdowne</option>
-            <option value="Lawndale">Lawndale </option>
-            <option value="Levittown">Levittown</option>
-            <option value="Link Belt">Link Belt Station</option>
-            <option value="Main St">Main Street Station</option>
-            <option value="Malvern">Malvern</option>
-            <option value="Manayunk East">Manayunk</option>
-            <option value="Marcus Hook">Marcus Hook</option>
-            <option value="Meadowbrook">Meadowbrook</option>
-            <option value="Media">Media</option>
-            <option value="Melrose Park">Melrose Park</option>
-            <option value="Merion">Merion</option>
-            <option value="Miquon">Miquon</option>
-            <option value="Morton">Morton</option>
-            <option value="Moylan-Rose Valley">Moylan-Rose Valley</option>
-            <option value="Mt Airy">Mt. Airy</option>
-            <option value="Narberth">Narberth </option>
-            <option value="Neshaminy Falls">Neshaminy Falls</option>
-            <option value="New Britain">New Britain</option>
-            <option value="Newark">Newark</option>
-            <option value="Norristown TC">Norristown Transportation Center</option>
-            <option value="North Broad St">North Broad Street</option>
-            <option value="North Hills">North Hills</option>
-            <option value="North Philadelphia">North Philadelphia</option>
-            <option value="North Wales">North Wales</option>
-            <option value="Norwood">Norwood </option>
-            <option value="Olney">Olney</option>
-            <option value="Oreland">Oreland</option>
-            <option value="Overbrook">Overbrook</option>
-            <option value="Paoli">Paoli</option>
-            <option value="Penllyn">Penllyn</option>
-            <option value="Pennbrook">Pennbrook</option>
-            <option value="Penn Medicine Station">Penn Medicine Station</option>
-            <option value="Philmont">Philmont</option>
-            <option value="Primos">Primos Station</option>
-            <option value="Prospect Park">Prospect Park</option>
-            <option value="Queen Lane">Queen Lane</option>
-            <option value="Radnor">Radnor</option>
-            <option value="Ridley Park">Ridley Park</option>
-            <option value="Rosemont">Rosemont</option>
-            <option value="Roslyn">Roslyn</option>
-            <option value="Rydal">Rydal</option>
-            <option value="Ryers">Ryers</option>
-            <option value="Secane">Secane</option>
-            <option value="Sharon Hill">Sharon Hill</option>
-            <option value="Somerton">Somerset Station</option>
-            <option value="Spring Mill">Spring Mill</option>
-            <option value="St. Davids">St. Davids</option>
-            <option value="St. Martins">St. Martins</option>
-            <option value="Stenton">Stenton</option>
-            <option value="Strafford">Strafford</option>
-            <option value="Suburban Station">Suburban Station</option>
-            <option value="Swarthmore">Swarthmore</option>
-            <option value="Tacony">Tacony</option>
-            <option value="Temple U">Temple University</option>
-            <option value="Thorndale">Thorndale</option>
-            <option value="Torresdale">Torresdale</option>
-            <option value="Trenton">Trenton</option>
-            <option value="Trevose">Trevose</option>
-            <option value="Tulpehocken">Tulpehocken</option>
-            <option value="University City">University City</option>
-            <option value="Upsal">Upsal Station</option>
-            <option value="Villanova">Villanova</option>
-            <option value="Wallingford">Wallingford</option>
-            <option value="Warminster">Warminster Station</option>
-            <option value="Washington Lane">Washington Lane</option>
-            <option value="Wayne Jct">Wayne Junction</option>
-            <option value="Wayne">Wayne </option>
-            <option value="West Trenton">West Trenton</option>
-            <option value="Whitford">Whitford Station</option>
-            <option value="Willow Grove">Willow Grove</option>
-            <option value="Wilmington">Wilmington</option>
-            <option value="Wissahickon">Wissahickon</option>
-            <option value="Wister">Wister Station</option>
-            <option value="Woodbourne">Woodbourne</option>
-            <option value="Wyndmoor">Wyndmoor</option>
-            <option value="Wynnefield Avenue">Wynnefield Ave.</option>
-            <option value="Wynnewood">Wynnewood</option>
-            <option value="Yardley">Yardley</option>
-         </select>
+            <select name="slct__station" id="slct__station">
+                <option value="">Select Station</option>
+                <option value="9th St">9th Street Station</option>
+                <option value="30th Street Station">30th Street Station</option>
+                <option value="49th St">49th Street Station</option>
+                <option value="Airport Terminal A">Airport Terminal A</option>
+                <option value="Airport Terminal B">Airport Terminal B</option>
+                <option value="Airport Terminal C-D">Airport Terminal C-D</option>
+                <option value="Airport Terminal E-F">Airport Terminal E-F</option>
+                <option value="Allegheny">Allegheny</option>
+                <option value="Allen Lane">Allen Lane Station</option>
+                <option value="Ambler">Ambler</option>
+                <option value="Angora">Angora</option>
+                <option value="Ardmore">Ardmore</option>
+                <option value="Ardsley">Ardsley</option>
+                <option value="Bala">Bala Station</option>
+                <option value="Berwyn">Berwyn</option>
+                <option value="Bethayres">Bethayres</option>
+                <option value="Bridesburg">Bridesburg</option>
+                <option value="Bridge">Bridgeport</option>
+                <option value="Bristol">Bristol</option>
+                <option value="Bryn Mawr">Bryn Mawr</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Chalfont">Chalfont</option>
+                <option value="Chelten Avenue">Chelten Ave. Station</option>
+                <option value="Cheltenham">Cheltenham</option>
+                <option value="Chester TC">Chester Transportation Center</option>
+                <option value="Chestnut Hill East">Chestnut Hill East</option>
+                <option value="Chestnut Hill West">Chestnut Hill West</option>
+                <option value="Claymont">Claymont</option>
+                <option value="Clifton-Aldan">Clifton-Aldan</option>
+                <option value="Colmar">Colmar</option>
+                <option value="Conshohocken">Conshohocken</option>
+                <option value="Cornwells Heights">Cornwells Heights</option>
+                <option value="Crestmont">Crestmont</option>
+                <option value="Croydon">Croydon</option>
+                <option value="Crum Lynne">Crum Lynne</option>
+                <option value="Curtis Park">Curtis Park</option>
+                <option value="Cynwyd">Cynwyd</option>
+                <option value="Daylesford">Dalesford</option>
+                <option value="Darby">Darby</option>
+                <option value="Delaware Valley College">Delaware Valley College</option>
+                <option value="Devon">Devon</option>
+                <option value="Downingtown">Downingtown</option>
+                <option value="Doylestown">Doylestown</option>
+                <option value="East Falls">East Falls</option>
+                <option value="Eastwick Station">Eastwick</option>
+                <option value="Eddington">Eddington</option>
+                <option value="Eddystone">Eddystone</option>
+                <option value="Elkins Park">Elkins Park</option>
+                <option value="Elm St">Elm Street Station</option>
+                <option value="Elwyn Station">Elwyn</option>
+                <option value="Exton">Exton</option>
+                <option value="Fern Rock TC">Fern Rock Transportation Center</option>
+                <option value="Fernwood">Fernwood-Yeadon</option>
+                <option value="Folcroft">Folcroft</option>
+                <option value="Forest Hills">Forest Hills</option>
+                <option value="Ft Washington">Fort Washington</option>
+                <option value="Fortuna">Fortuna</option>
+                <option value="Fox Chase">Fox Chase</option>
+                <option value="Germantown">Germantown</option>
+                <option value="Gladstone">Gladstone</option>
+                <option value="Glenolden">Glenolden</option>
+                <option value="Glenside">Glenside</option>
+                <option value="Gravers">Gravers</option>
+                <option value="Gwynedd Valley">Gwynedd Valley</option>
+                <option value="Hatboro">Hatboro</option>
+                <option value="Haverford">Haverford</option>
+                <option value="Highland Ave">Highland Avenue</option>
+                <option value="Highland">Highland </option>
+                <option value="Holmesburg Jct">Holmesburg Jct.</option>
+                <option value="Ivy Ridge">Ivy Ridge</option>
+                <option value="Market East">Jefferson Station</option>
+                <option value="Jenkintown-Wyncote">Jenkintown</option>
+                <option value="Langhorne">Langhorne</option>
+                <option value="Lansdale">Lansdale</option>
+                <option value="Lansdowne">Lansdowne</option>
+                <option value="Lawndale">Lawndale </option>
+                <option value="Levittown">Levittown</option>
+                <option value="Link Belt">Link Belt Station</option>
+                <option value="Main St">Main Street Station</option>
+                <option value="Malvern">Malvern</option>
+                <option value="Manayunk East">Manayunk</option>
+                <option value="Marcus Hook">Marcus Hook</option>
+                <option value="Meadowbrook">Meadowbrook</option>
+                <option value="Media">Media</option>
+                <option value="Melrose Park">Melrose Park</option>
+                <option value="Merion">Merion</option>
+                <option value="Miquon">Miquon</option>
+                <option value="Morton">Morton</option>
+                <option value="Moylan-Rose Valley">Moylan-Rose Valley</option>
+                <option value="Mt Airy">Mt. Airy</option>
+                <option value="Narberth">Narberth </option>
+                <option value="Neshaminy Falls">Neshaminy Falls</option>
+                <option value="New Britain">New Britain</option>
+                <option value="Newark">Newark</option>
+                <option value="Norristown TC">Norristown Transportation Center</option>
+                <option value="North Broad St">North Broad Street</option>
+                <option value="North Hills">North Hills</option>
+                <option value="North Philadelphia">North Philadelphia</option>
+                <option value="North Wales">North Wales</option>
+                <option value="Norwood">Norwood </option>
+                <option value="Olney">Olney</option>
+                <option value="Oreland">Oreland</option>
+                <option value="Overbrook">Overbrook</option>
+                <option value="Paoli">Paoli</option>
+                <option value="Penllyn">Penllyn</option>
+                <option value="Pennbrook">Pennbrook</option>
+                <option value="Penn Medicine Station">Penn Medicine Station</option>
+                <option value="Philmont">Philmont</option>
+                <option value="Primos">Primos Station</option>
+                <option value="Prospect Park">Prospect Park</option>
+                <option value="Queen Lane">Queen Lane</option>
+                <option value="Radnor">Radnor</option>
+                <option value="Ridley Park">Ridley Park</option>
+                <option value="Rosemont">Rosemont</option>
+                <option value="Roslyn">Roslyn</option>
+                <option value="Rydal">Rydal</option>
+                <option value="Ryers">Ryers</option>
+                <option value="Secane">Secane</option>
+                <option value="Sharon Hill">Sharon Hill</option>
+                <option value="Somerton">Somerset Station</option>
+                <option value="Spring Mill">Spring Mill</option>
+                <option value="St. Davids">St. Davids</option>
+                <option value="St. Martins">St. Martins</option>
+                <option value="Stenton">Stenton</option>
+                <option value="Strafford">Strafford</option>
+                <option value="Suburban Station">Suburban Station</option>
+                <option value="Swarthmore">Swarthmore</option>
+                <option value="Tacony">Tacony</option>
+                <option value="Temple U">Temple University</option>
+                <option value="Thorndale">Thorndale</option>
+                <option value="Torresdale">Torresdale</option>
+                <option value="Trenton">Trenton</option>
+                <option value="Trevose">Trevose</option>
+                <option value="Tulpehocken">Tulpehocken</option>
+                <option value="University City">University City</option>
+                <option value="Upsal">Upsal Station</option>
+                <option value="Villanova">Villanova</option>
+                <option value="Wallingford">Wallingford</option>
+                <option value="Warminster">Warminster Station</option>
+                <option value="Washington Lane">Washington Lane</option>
+                <option value="Wayne Jct">Wayne Junction</option>
+                <option value="Wayne">Wayne </option>
+                <option value="West Trenton">West Trenton</option>
+                <option value="Whitford">Whitford Station</option>
+                <option value="Willow Grove">Willow Grove</option>
+                <option value="Wilmington">Wilmington</option>
+                <option value="Wissahickon">Wissahickon</option>
+                <option value="Wister">Wister Station</option>
+                <option value="Woodbourne">Woodbourne</option>
+                <option value="Wyndmoor">Wyndmoor</option>
+                <option value="Wynnefield Avenue">Wynnefield Ave.</option>
+                <option value="Wynnewood">Wynnewood</option>
+                <option value="Yardley">Yardley</option>
+            </select>
         </div>
         <button class="btn-station" id="arrivals" type="submit">Get Arrivals</button>
-        <button class="btn-train" id="trainInfo" type = "submit">Track Regional Rail</button>
-            <!--<button class="btn-station" id="stationInfo" type ="submit">Regional Rail Arrivals</button>-->
+        <button class="btn-train" id="trainInfo" type="submit">Track Regional Rail</button>
+        <!--<button class="btn-station" id="stationInfo" type ="submit">Regional Rail Arrivals</button>-->
         <h1 class="form__title-trolley">SEPTA Trolleys</h1>
-            <div class="form__select">
-                <select name="slct__trolley" id="slct__trolley">
-                    <option value="">Select Route</option>
-                    <option value="10">Route 10</option>
-                    <option value="11">Route 11</option>
-                    <option value="15">Route 15</option>
-                    <option value="34">Route 34</option>
-                    <option value="36">Route 36</option>
-                    <option value="101">Route 101</option>
-                    <option value="102">Route 102</option>
-                </select>
-            </div>
-            <button class="btn-trolley" id="trolleyInfo" type ="submit">Track Trolley Locations</button>
-      
-        
-        <h1 class="form__title">NJ Transit Rail</h1>
-        <button class="btn-njt" id="njtRail" type ="submit">NJTR Locations</button>
-                <p class="form__text">See Schedule For:</p>
-                <div class="form__select">
-                    <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
-                    </select>"
-                </div>
-        
-        <button class ="btn-clear" id="clear" type = "submit">Reset Map</button>       
-         
+        <div class="form__select">
+            <select name="slct__trolley" id="slct__trolley">
+                <option value="">Select Route</option>
+                <option value="10">Route 10</option>
+                <option value="11">Route 11</option>
+                <option value="15">Route 15</option>
+                <option value="34">Route 34</option>
+                <option value="36">Route 36</option>
+                <option value="101">Route 101</option>
+                <option value="102">Route 102</option>
+            </select>
+        </div>
+        <button class="btn-trolley" id="trolleyInfo" type="submit">Track Trolley Locations</button>
 
-    </div> <!--End Side navigation-->
+
+        <h1 class="form__title">NJ Transit Rail</h1>
+        <button class="btn-njt" id="njtRail" type="submit">NJTR Locations</button>
+        <p class="form__text">See Schedule For:</p>
+        <div class="form__select">
+            <select name="slct__station" id="slct__station__njt" onchange="this.form.submit()">
+            </select>"
+        </div>
+
+        <button class="btn-clear" id="clear" type="submit">Reset Map</button>
+
+
+    </div>
+    <!--End Side navigation-->
 
     <!--Modal Table for Arrivals and Departuress-->
     <div class="hidden" id="tableContainer">
@@ -244,42 +244,56 @@
             <div class="table-title">
                 <div class="col-sm-6" id="boardTitle">
                     <!--<h2><b>Train Information</b></h2>-->
-                    
+
                 </div>
                 <div class="col-sm-6">
                     <button class="btn btn-danger" id='btnCloseTable' data-toggle="modal"><i class="material-icons"></i> <span>Close</span></button>
                     <button class="btn btn-refresh" id="btnRefreshTable"><i class="material-icons"></i><span>Refresh</span></button>
                 </div>
             </div>
-        
-        <table class="table table-striped table-hover" id = "departuresTable">
-            <thead>
-                <tr>
-                    <th><h2>Time</h2></th>
-                    <th><h2>Number</h2></th>
-                    <th><h2>Line</h2></th>
-                    <th><h2>Destination</h2></th>
-                    <th><h2>From</h2></th>
-                    <th><h2>Status</h2></th>
-                    <th><h2>Track</h2></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!--Get Train Information and put it here-->
-            </tbody>
-        </table>
-    </div>
-    </div>
-   
-      <!--The Map-->
-      <div class="main" id="map"></div>
 
-   </body>
-   
-   <script src="./main.js"></script>
-   <script src="./display_helper.js"></script>
-   <script src="./request.js"></script>
-   <script src="./map.js"></script>
-   <script src="./board.js"></script>
+            <table class="table table-striped table-hover" id="departuresTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Time</h2>
+                        </th>
+                        <th>
+                            <h2>Number</h2>
+                        </th>
+                        <th>
+                            <h2>Line</h2>
+                        </th>
+                        <th>
+                            <h2>Destination</h2>
+                        </th>
+                        <th>
+                            <h2>From</h2>
+                        </th>
+                        <th>
+                            <h2>Status</h2>
+                        </th>
+                        <th>
+                            <h2>Track</h2>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Get Train Information and put it here-->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-   </html>
+    <!--The Map-->
+    <div class="main" id="map"></div>
+
+</body>
+
+<script src="./main.js"></script>
+<script src="./display_helper.js"></script>
+<script src="./request.js"></script>
+<script src="./map.js"></script>
+<script src="./board.js"></script>
+
+</html>
