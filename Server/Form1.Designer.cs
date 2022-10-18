@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnConnect = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGetStops = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnGetRoutes = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -43,14 +43,14 @@
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnGetStops
             // 
-            this.button2.Location = new System.Drawing.Point(0, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnGetStops.Location = new System.Drawing.Point(0, 65);
+            this.btnGetStops.Name = "btnGetStops";
+            this.btnGetStops.Size = new System.Drawing.Size(75, 23);
+            this.btnGetStops.TabIndex = 1;
+            this.btnGetStops.Text = "Get Stops";
+            this.btnGetStops.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -60,6 +60,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnGetRoutes
             // 
@@ -72,10 +73,10 @@
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(620, 234);
+            this.ClientSize = new System.Drawing.Size(317, 145);
             this.Controls.Add(this.btnGetRoutes);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnGetStops);
             this.Controls.Add(this.btnConnect);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
@@ -86,7 +87,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGetStops;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnGetRoutes;
     }
