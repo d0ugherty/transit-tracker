@@ -59,8 +59,6 @@ $("#clear").on('click', function(event){
 $("#njtRail").on('click', function(event){
    //TO DO: finish this
  });
-
- 
 });
 
 function setInputError(inputElement, message) {
