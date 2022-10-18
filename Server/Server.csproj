@@ -76,6 +76,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NJT_RailDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NJT_RailDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Shape.cs" />
     <Compile Include="Stop.cs" />
     <Compile Include="StopTime.cs" />
@@ -101,6 +106,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="NJT_RailDataSet.xsc">
+      <DependentUpon>NJT_RailDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="NJT_RailDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NJT_RailDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NJT_RailDataSet.xss">
+      <DependentUpon>NJT_RailDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
