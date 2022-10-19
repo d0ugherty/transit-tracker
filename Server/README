@@ -1,2 +1,0 @@
-Using C# to pass SQL queries, JSON generation, and other server-side logic. This setup is really just to test out
-communicating with the SQL server and does not interact with the current JS yet.
