@@ -226,3 +226,4 @@ AppPackages/
 #####
 Web.Debug.Config
 Web.Release.Config
+App_Start
