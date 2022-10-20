@@ -50,5 +50,41 @@ public class CalendarDatesController : ApiController{
             Console.WriteLine(jsonString);
             return dates;
     }
+
+     public IEnumerable<CalendarDate> getDatesById(int id){
+            string connectionString;
+            SqlConnection cnn;
+            connectionString = System.IO.File.ReadAllText(@"C:\Users\tdoug\source\repos\transit-tracker\cnnstring.txt");
+            cnn = new SqlConnection(connectionString);
+            cnn.Open();
+
+            SqlCommand command;
+            SqlDataReader dataReader;
+            string sql;
+
+            sql = $"SELECT * FROM njt_calendar_dates WHERE service_id={id}";
+
+            command = new SqlCommand(sql, cnn);
+
+            dataReader = command.ExecuteReader();
+
+            var dates = new List<CalendarDate>();
+
+            while (dataReader.Read())
+            {
+                dates.Add(new CalendarDate()
+                {
+                    service_id = (int)dataReader["service_id"],
+                    date = (string)dataReader["date"],
+                    exception_type = (int)dataReader["exception_type"]
+                });
+            }
+            //ystem.Console.WriteLine();
+            //var options = new JsonSerializerOptions { WriteIndented = true };
+            //string jsonString = JsonSerializer.Serialize(dates, options);
+            cnn.Close();
+            Console.WriteLine(jsonString);
+            return dates;
+    }
 }
 }
