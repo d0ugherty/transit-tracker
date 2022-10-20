@@ -81,3 +81,14 @@ function getTrolleyStops(route) {
         }
     });
 }
+
+//NJT Atlantic City Line Stop Locations
+function getACLStops() {
+    let uri = "api/stop/ACL";
+    $.getJSON(uri)
+        .done(function (data) {
+            $.each(data, function (key, item) {
+                console.write(item);
+            });
+        });
+}
