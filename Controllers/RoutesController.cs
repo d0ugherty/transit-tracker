@@ -68,7 +68,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql, Output = "";
 
-            sql = $"SELECT * FROM njt_routes WHERE route_short_name={routeName}";
+            sql = $"SELECT FROM njt_routes WHERE route_short_name={routeName}";
 
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();

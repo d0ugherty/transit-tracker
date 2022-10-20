@@ -12,8 +12,9 @@ namespace Transit_App.Controllers
 {
     public class StopController : ApiController
     {
+       
 
-        public List<Stop> getAllStops()
+        public IEnumerable<Stop> getAllStops()
         {
             string connectionString;
             SqlConnection cnn;
@@ -28,10 +29,10 @@ namespace Transit_App.Controllers
             sql = "SELECT * FROM njt_stops";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
-            var Stops = new List<Stop>();
+            var stops = new List<Stop>();
             while (dataReader.Read())
             {
-                Stops.Add(new Stop()
+                stops.Add(new Stop()
                 {
                     stop_id = (int)dataReader["stop_id"],
                     stop_code = (int)dataReader["stop_code"],
@@ -43,10 +44,10 @@ namespace Transit_App.Controllers
                 });
             }
             var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(Stops, options);
+            string jsonString = JsonSerializer.Serialize(stops, options);
 
-            Console.WriteLine(jsonString);
-            return Stops;
+            //Console.WriteLine(jsonString);
+            return stops;
         }
 
         public List<Stop> getStopsByRoute(string stopDesc)
@@ -61,7 +62,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM njt_stops WHERE stop_desc ={stopDesc}";
+            sql = $"SELECT * FROM njt_stops WHERE stop_desc={stopDesc}";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             var Stops = new List<Stop>();
@@ -84,5 +85,7 @@ namespace Transit_App.Controllers
             Console.WriteLine(jsonString);
             return Stops;
         }
+
+
     }
 }
