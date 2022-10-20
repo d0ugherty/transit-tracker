@@ -84,11 +84,14 @@ function getTrolleyStops(route) {
 
 //NJT Atlantic City Line Stop Locations
 function getACLStops() {
-    let uri = "api/stop/ACL";
-    $.getJSON(uri)
-        .done(function (data) {
-            $.each(data, function (key, item) {
-                console.write(item);
+    let url = "/api/stop/?stopDesc='ACL'";
+    $.getJSON(url)
+        .done(function(data){
+            $.each(data,function(key,item){
+                console.log(item.stop_name + ": " + item.stop_lat + "   " + item.stop_lon);
+                displayACLStops(item);
             });
         });
 }
+
+
