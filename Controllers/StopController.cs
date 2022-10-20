@@ -43,10 +43,11 @@ namespace Transit_App.Controllers
                     zone_id = (int)dataReader["zone_id"]
                 });
             }
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(stops, options);
+            //var options = new JsonSerializerOptions { WriteIndented = true };
+            //string jsonString = JsonSerializer.Serialize(stops, options);
 
             //Console.WriteLine(jsonString);
+            cnn.Close();
             return stops;
         }
 
@@ -79,10 +80,11 @@ namespace Transit_App.Controllers
                     zone_id = (int)dataReader["zone_id"]
                 });
             }
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(Stops, options);
+            //var options = new JsonSerializerOptions { WriteIndented = true };
+            // string jsonString = JsonSerializer.Serialize(Stops, options);
 
-            Console.WriteLine(jsonString);
+            // Console.WriteLine(jsonString);
+            cnn.Close();
             return Stops;
         }
 
