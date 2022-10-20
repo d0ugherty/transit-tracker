@@ -57,7 +57,7 @@ $("#clear").on('click', function(event){
     location.reload();
     });
 $("#njtRail").on('click', function(event){
-   //TO DO: finish this
+    getACLStops();
  });
 });
 
