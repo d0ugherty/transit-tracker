@@ -88,7 +88,6 @@ function getACLStops() {
     $.getJSON(url)
         .done(function(data){
             $.each(data,function(key,item){
-                console.log(item.stop_name + ": " + item.stop_lat + "   " + item.stop_lon);
                 displayACLStops(item);
             });
         });

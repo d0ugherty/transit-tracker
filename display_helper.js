@@ -69,13 +69,13 @@ function displayTrolleyStops(item) {
   stationMarker.bindPopup(popup);
 }
 
-function displayACLStops(item){
+function displayACLStops(item) {
     let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
-        color: '#ccdceb',
+        color: '#ffffff',
         weight: 5,
-        fillColor: '#075AAA',
+        fillColor: '#ffffff',
         fillOpacity: 1.0,
-        radius: 7 
+        radius: 7
     }).addTo(stationLayer);
     let popup = L.popup({
         "autoClose": false,
