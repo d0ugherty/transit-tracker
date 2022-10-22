@@ -71,9 +71,9 @@ function displayTrolleyStops(item) {
 
 function displayACLStops(item) {
     let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
-        color: '#ffffff',
-        weight: 5,
-        fillColor: '#ffffff',
+        color: '#f5853e',
+        weight: 4,
+        fillColor: '#075aaa',
         fillOpacity: 1.0,
         radius: 7
     }).addTo(stationLayer);
