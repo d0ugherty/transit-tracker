@@ -220,7 +220,7 @@ project.lock.json
 
 # UWP Projects
 AppPackages/
-
+ls
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
@@ -232,4 +232,5 @@ obj
 App_Data/
 Server
 API
+cnnstring.txt
 

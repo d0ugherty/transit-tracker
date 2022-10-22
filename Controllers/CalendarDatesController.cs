@@ -47,7 +47,7 @@ public class CalendarDatesController : ApiController{
             //var options = new JsonSerializerOptions { WriteIndented = true };
             //string jsonString = JsonSerializer.Serialize(dates, options);
             cnn.Close();
-            Console.WriteLine(jsonString);
+            //Console.WriteLine(jsonString);
             return dates;
     }
 
@@ -83,7 +83,7 @@ public class CalendarDatesController : ApiController{
             //var options = new JsonSerializerOptions { WriteIndented = true };
             //string jsonString = JsonSerializer.Serialize(dates, options);
             cnn.Close();
-            Console.WriteLine(jsonString);
+            //Console.WriteLine(jsonString);
             return dates;
     }
 }

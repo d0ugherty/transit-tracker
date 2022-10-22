@@ -123,13 +123,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CalendarDatesController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
+    <Compile Include="Controllers\ShapesController.cs" />
     <Compile Include="Controllers\StopController.cs" />
+    <Compile Include="Controllers\StopTimesController.cs" />
+    <Compile Include="Controllers\TripsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CalendarDate.cs" />
     <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\Shape.cs" />
     <Compile Include="Models\Stop.cs" />
+    <Compile Include="Models\StopTime.cs" />
+    <Compile Include="Models\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
