@@ -17,18 +17,14 @@ function getRegionalRailLoc() {
 }
 
 //SEPTA Regional Rail station location marking
-function getRegionalRailStations(railStationURLs) {
-    $.each(railStationURLs, function(i, u) {
-        $.ajax(u, {
-            type: 'GET',
-            dataType: 'jsonp',
-            success: function(data) {
-                $.each(data, function(i, item) {
-                    displayStationLoc(item);
-                });
-            }
-        });
-    });
+function getRegionalRailStations() {
+    let url = "/api/stop/?agency=septa"
+    $.getJSON(url)
+        .done(function (data) {
+            $.each(data, function (key, item) {
+                displayStationLoc(item);
+            })
+        })
 }
 
 function getArrivals(station, optText) {
@@ -87,7 +83,7 @@ function getACLStops() {
     let url = "/api/stop/?stopDesc='ACL'";
     $.getJSON(url)
         .done(function(data){
-            $.each(data,function(key,item){
+            $.each(data, function (key, item) {
                 displayACLStops(item);
             });
         });

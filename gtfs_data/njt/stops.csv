@@ -1,4 +1,4 @@
-stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id
+git stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id
 1,95001,"30TH ST. PHL.","ACL",39.956565,-75.182327,5961
 2,95002,"ABSECON","ACL",39.424333,-74.502094,333
 3,95003,"ALLENDALE",,41.030902,-74.130957,2893

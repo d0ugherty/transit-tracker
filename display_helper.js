@@ -21,7 +21,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
 }
 
 function displayStationLoc(item) {
-  let stationMarker = L.circleMarker([item.location_lat, item.location_lon], {
+  let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
       color: '#2C3E50',
       weight: 5,
       fillColor: '#c9d3d9',
@@ -31,7 +31,7 @@ function displayStationLoc(item) {
   let popup = L.popup({
       "autoClose": false,
       "closeOnClock": null
-  }).setContent(`<h3>${item.location_name}</h3>`);
+  }).setContent(`<h3>${item.stop_name}</h3>`);
   stationMarker.bindPopup(popup);
 }
 
