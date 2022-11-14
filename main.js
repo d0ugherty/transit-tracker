@@ -25,7 +25,7 @@ $(document).ready(function() {
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
     getRegionalRailLoc()
-    getRegionalRailStations(railStationURLs);
+    getRegionalRailStations();
     event.preventDefault();
   }); //End Train Button Event Handler
 

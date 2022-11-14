@@ -137,7 +137,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM {agency}_stops WHERE zone_id={zone_id}";
+            sql = $"SELECT * FROM {agency}_stops WHERE zone_id={zoneId}";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             var stops = new List<Stop>();
