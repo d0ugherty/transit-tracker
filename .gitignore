@@ -195,6 +195,8 @@ Icon?
 
 # Visual Studio temp something
 .vs/
+packages/
+Properties/
 
 # dotnet stuff
 project.lock.json
@@ -234,14 +236,8 @@ Server
 API
 cnnstring.txt
 
-gtfs_data/septa/agency.txt
-gtfs_data/septa/calendar_dates.txt
-gtfs_data/septa/calendar.txt
-gtfs_data/septa/fare_attributes.txt
-gtfs_data/septa/fare_rules.txt
-gtfs_data/septa/feed_info.txt
-gtfs_data/septa/routes.txt
-gtfs_data/septa/shapes.txt
-gtfs_data/septa/stop_times.txt
-gtfs_data/septa/stops.txt
-gtfs_data/septa/trips.txt
+gtfs_data/
+*.config
+*.asax
+*.asax.cs
+screenshots/
