@@ -31,21 +31,25 @@ function getRegionalRailLoc() {
 }*/
 
 function getStations(agency, routeId) {
-    if(routeId == 'ALL'){
-        let url = `/api/stop/?agency=${agency}`;
-        $.getJSON(url)
-            .done(function (data) {
-                $each(data, function (key, item) {
-                    displayStationLoc(item);
-                })
-            })
-
-    } else {
-        let url = `/api/stop/?agency=${agency}&route_id=${routeId}`;
+    if(routeId == 'ALL' && agency == 'septa'){
+        let url = `/api/stop/`;
+        let color = '#151f27';
+        let fillColor ='#a2b2be';
         $.getJSON(url)
             .done(function (data) {
                 $.each(data, function (key, item) {
-                    displayStationLoc(item);
+                    displayStationLoc(color, fillColor, item);
+                })
+            })
+
+    } else if(agency == 'septa') {
+        let url = `/api/stop/?agency=${agency}&route_id=${routeId}`;
+        let color = '#151f27';
+        let fillColor ='#a2b2be';
+        $.getJSON(url)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    displayStationLoc(color, fillColor, item);
                 })
             })
         }

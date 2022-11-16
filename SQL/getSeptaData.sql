@@ -73,7 +73,7 @@ GO
 
 SELECT * FROM dbo.septa_stops
 
-TRUNCATE TABLE dbo.septa_stops
+TRUNCATE TABLE dbo.septa_trips
 
 BULK INSERT dbo.septa_trips
 FROM 'C:\Users\tdoug\source\repos\transit-tracker\gtfs_data\septa\trips.csv'

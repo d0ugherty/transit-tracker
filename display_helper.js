@@ -21,6 +21,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
 }
 
 function displayStationLoc(color, fillColor, item) {
+    console.log(item);
   let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
       color: color,
       weight: 5,

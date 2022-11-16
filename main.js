@@ -11,12 +11,20 @@ $(document).ready(function() {
 
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
-    let routeId = $("#slct__line option:selected").val();
-    let agency = septa;
+    let routeId = $("#slct__line option:selected").text();
+    let agency = "septa";
     getRegionalRailLoc()
     getStations(agency, routeId);
     event.preventDefault();
   }); //End Train Button Event Handler
+
+  $("#stops").on('click', function (event) {
+    map.flyTo([39.952325, -75.163705], 10);
+    let routeId = $("#slct__line option:selected").val();
+    let agency = "septa";
+    getStations(agency, routeId);
+    event.preventDefault();
+  });
 
   $("#arrivals").on('click', function(event) {
     let station = $("#slct__station option:selected").val();
@@ -45,9 +53,12 @@ $(document).ready(function() {
 $("#clear").on('click', function(event){
     location.reload();
     });
-$("#njtRail").on('click', function(event){
-    getACLStops();
+  $("#njtRail").on('click', function (event) {
+    let routeId = 
+    let agency = "njt";
+    getStations();
  });
+ 
 });
 
 function setInputError(inputElement, message) {
