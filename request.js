@@ -16,20 +16,7 @@ function getRegionalRailLoc() {
     });
 }
 
-//SEPTA Regional Rail station location marking
-/*function getRegionalRailStations() {
-    let url = "/api/stop/?agency=septa";
-    let agency = "septa";
-    $.getJSON(url)
-        .done(function (data) {
-            $.each(data, function (key, item) {
-                let color = '#2C3E50';
-                let fillColor = '#c9d3d9';
-                displayStationLoc(color, fillColor, item);
-            })
-        })
-}*/
-
+//
 function getStations(agency, routeId) {
     if(routeId == 'ALL' && agency == 'septa'){
         let url = `/api/stop/`;

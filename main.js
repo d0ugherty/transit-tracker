@@ -54,7 +54,7 @@ $("#clear").on('click', function(event){
     location.reload();
     });
   $("#njtRail").on('click', function (event) {
-    let routeId = 
+    let routeId;
     let agency = "njt";
     getStations();
  });
