@@ -51,7 +51,7 @@ namespace Transit_App.Controllers
             return stops;
         }
 
-        public List<Stop> getStopsByRoute(string stopDesc)
+        public List<Stop> getStopsByRoute(string agency, string routeId)
         {
             string connectionString;
             SqlConnection cnn;
@@ -63,7 +63,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM njt_stops WHERE stop_desc={stopDesc}";
+            sql = $"SELECT * FROM {agency}_stops WHERE route_id={routeId}";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             var Stops = new List<Stop>();

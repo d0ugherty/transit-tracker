@@ -9,25 +9,22 @@
 */
 $(document).ready(function() {
 
- /* let railStationURLs = ["https://www3.septa.org/api/locations/get_locations.php?lon=-75.161&lat=39.952&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.598&lat=40.031&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.625&lat=39.079&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.705&lat=39.689&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.403&lat=39.828&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.325&lat=40.053&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.050&lat=40.053&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-74.857&lat=40.171&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.221&lat=40.241&type=rail_stations&radius=55&callback=?",
-      "https://www3.septa.org/api/locations/get_locations.php?lon=-75.094&lat=40.184&type=rail_stations&radius=55&callback=?"
-  ];*/
-  
-
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
+    let routeId = $("#slct__line option:selected").text();
+    let agency = "septa";
     getRegionalRailLoc()
-    getRegionalRailStations();
+    getStations(agency, routeId);
     event.preventDefault();
   }); //End Train Button Event Handler
+
+  $("#stops").on('click', function (event) {
+    map.flyTo([39.952325, -75.163705], 10);
+    let routeId = $("#slct__line option:selected").val();
+    let agency = "septa";
+    getStations(agency, routeId);
+    event.preventDefault();
+  });
 
   $("#arrivals").on('click', function(event) {
     let station = $("#slct__station option:selected").val();
@@ -56,9 +53,12 @@ $(document).ready(function() {
 $("#clear").on('click', function(event){
     location.reload();
     });
-$("#njtRail").on('click', function(event){
-    getACLStops();
+  $("#njtRail").on('click', function (event) {
+    let routeId;
+    let agency = "njt";
+    getStations();
  });
+ 
 });
 
 function setInputError(inputElement, message) {

@@ -241,3 +241,13 @@ gtfs_data/
 *.asax
 *.asax.cs
 screenshots/
+packages/
+packages/leaflet/leaflet.js
+.gitignore
+packages/jquery-3.6.1.min.js
+packages/package-lock.json
+packages/package.json
+packages/leaflet/leaflet-src.esm.js
+packages/leaflet/leaflet-src.js
+packages/leaflet/leaflet.js
+packages/leaflet/leaflet-src.esm.js

@@ -210,14 +210,14 @@ select::-ms-expand {
 .form__link:hover {
     text-decoration: underline;
 }
-
-.btn-train,.btn-station {
-    margin-top: 1rem;
+/*buttons*/
+.btn-train,.btn-station,.btn-stops {
+    margin-top: .5rem;
     margin-right: 1rem;
     margin-left: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     width: 75%;
-    padding: 10px;
+    padding: 7px;
     font-size: 1rem;
     color: #ffffffff;
     border: none;
@@ -264,9 +264,10 @@ select::-ms-expand {
     transition: 1.4s;
 }
 .btn-train:hover,
-.btn-station:hover {
+.btn-station:hover,
+.btn-stops:hover {
     background: #446a7c;
-    transition: 1.4s;
+    transition: .7s;
 }
 .btn-njt:hover{
     background: #505050;
@@ -288,6 +289,7 @@ select::-ms-expand {
 .btn-train:active,
 .btn-station:active,
 .btn-trolley:active,
+.btn-stops:active,
 .btn-njt:active,
 .btn-clear:active {
     transition: 0.2s;
