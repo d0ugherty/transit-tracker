@@ -4,6 +4,7 @@
  * >           Fix trolley flickering
  * >          
  */
+
 function displayTrainCurrentLoc(item, trainLayer, icon) {
   let trainNumber = item.trainno;
   let trainMarker = L.marker([item.lat, item.lon], {
@@ -20,7 +21,7 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
   trainMarker.bindPopup(popup);
 }
 
-function displayStationLoc(color, fillColor, item) {
+function displayAllStations(color, fillColor, item) {
     console.log(item);
   let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
       color: color,
@@ -34,6 +35,10 @@ function displayStationLoc(color, fillColor, item) {
       "closeOnClock": null
   }).setContent(`<h3>${item.stop_name}</h3>`);
   stationMarker.bindPopup(popup);
+}
+
+function displayStationsOnRoute(agency, routeId) {
+    
 }
 
 function displayTrolleyLoc(item, route, trolleyLayer, icon) {

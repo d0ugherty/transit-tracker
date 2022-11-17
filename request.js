@@ -16,30 +16,26 @@ function getRegionalRailLoc() {
     });
 }
 
-//
-function getStations(agency, routeId) {
-    if(routeId == 'ALL' && agency == 'septa'){
-        let url = `/api/stop/`;
-        let color = '#151f27';
-        let fillColor ='#a2b2be';
+//SEPTA Regional Rail station location marking
+/*function getRegionalRailStations(agency, routeId) {
+    if (agency == 'septa' && routeId == 'ALL') {
+        let url = "/api/stop/?agency=septa";
         $.getJSON(url)
             .done(function (data) {
                 $.each(data, function (key, item) {
+                    let color = '#2C3E50';
+                    let fillColor = '#c9d3d9';
                     displayStationLoc(color, fillColor, item);
                 })
             })
+    } else if (agency == 'septa') 
+}*/
 
-    } else if(agency == 'septa') {
-        let url = `/api/stop/?agency=${agency}&route_id=${routeId}`;
-        let color = '#151f27';
-        let fillColor ='#a2b2be';
-        $.getJSON(url)
-            .done(function (data) {
-                $.each(data, function (key, item) {
-                    displayStationLoc(color, fillColor, item);
-                })
-            })
-        }
+function getStations(agency, routeId) {
+    if (agency == 'septa') {
+        
+    }
+    
 }
 
 function getArrivals(station, optText) {

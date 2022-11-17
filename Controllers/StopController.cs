@@ -63,7 +63,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM {agency}_stops WHERE route_id={routeId}";
+            sql = $"SELECT * FROM {agency}_stops";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             var Stops = new List<Stop>();
@@ -125,41 +125,6 @@ namespace Transit_App.Controllers
             return stops;
         }
 
-        public IEnumerable<Stop> getStopsByZoneId(string agency, string zoneId)
-        {
-            string connectionString;
-            SqlConnection cnn;
-            connectionString = System.IO.File.ReadAllText(@"C:\Users\tdoug\source\repos\transit-tracker\cnnstring.txt");
-            cnn = new SqlConnection(connectionString);
-            cnn.Open();
 
-            SqlCommand command;
-            SqlDataReader dataReader;
-            string sql;
-
-            sql = $"SELECT * FROM {agency}_stops WHERE zone_id={zoneId}";
-            command = new SqlCommand(sql, cnn);
-            dataReader = command.ExecuteReader();
-            var stops = new List<Stop>();
-            while (dataReader.Read())
-            {
-                stops.Add(new Stop()
-                {
-                    stop_id = (int)dataReader["stop_id"],
-                    stop_code = Convert.IsDBNull(dataReader["stop_code"]) ? null : (string)dataReader["stop_code"],
-                    stop_name = (string)dataReader["stop_name"],
-                    stop_desc = Convert.IsDBNull(dataReader["stop_desc"]) ? null : (string)dataReader["stop_desc"],
-                    stop_lat = (double)dataReader["stop_lat"],
-                    stop_lon = (double)dataReader["stop_lon"],
-                    zone_id = (string)dataReader["zone_id"]
-                });
-            }
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(stops, options);
-
-            Console.WriteLine(jsonString);
-            cnn.Close();
-            return stops;
-        }
     }
 }
