@@ -21,8 +21,8 @@ function displayTrainCurrentLoc(item, trainLayer, icon) {
   trainMarker.bindPopup(popup);
 }
 
-function displayAllStations(color, fillColor, item) {
-    console.log(item);
+function displayStations(color, fillColor, item) {
+    
   let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
       color: color,
       weight: 5,
@@ -37,8 +37,20 @@ function displayAllStations(color, fillColor, item) {
   stationMarker.bindPopup(popup);
 }
 
-function displayStationsOnRoute(agency, routeId) {
-    
+function displayStationsOnRoute(agency, routeId, color, fillColor, item) {
+        console.log(item);
+  let stationMarker = L.circleMarker([item.stop_lat, item.stop_lon], {
+      color: color,
+      weight: 5,
+      fillColor: fillColor,
+      fillOpacity: 1.0,
+      radius: 7
+  }).addTo(stationLayer);
+  let popup = L.popup({
+      "autoClose": false,
+      "closeOnClock": null
+  }).setContent(`<h3>${item.stop_name}</h3>`);
+  stationMarker.bindPopup(popup);
 }
 
 function displayTrolleyLoc(item, route, trolleyLayer, icon) {

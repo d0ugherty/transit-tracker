@@ -20,8 +20,9 @@ $(document).ready(function() {
 
   $("#stops").on('click', function (event) {
     map.flyTo([39.952325, -75.163705], 10);
-    let routeId = $("#slct__line option:selected").val();
+    let routeId = $("#slct__line-septa option:selected").val();
     let agency = "septa";
+    console.log(routeId);
     getStations(agency, routeId);
     event.preventDefault();
   });
@@ -54,9 +55,10 @@ $("#clear").on('click', function(event){
     location.reload();
     });
   $("#njtRail").on('click', function (event) {
-    let routeId;
+    let routeId = $("#slct__line-njt option:selected").val();
     let agency = "njt";
-    getStations();
+    getStations(agency, routeId);
+    event.preventDefault();
  });
  
 });

@@ -1,0 +1,13 @@
+﻿stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id
+90406,1,Penn Medicine Station,,39.9480556,-75.1902778,CC
+90004,2,Gray 30th Street,,39.9566667,-75.1816667,CC
+90005,3,Suburban Station,,39.9538889,-75.1677778,CC
+90006,4,Jefferson Station,,39.9525,-75.1580556,CC
+90007,5,Temple University,,39.9813889,-75.1494444,CC
+90008,6,North Broad,,39.9922222,-75.1538889,1N
+90009,7,Wayne Junction,,40.0222222,-75.16,1N
+90407,8,Fern Rock T C,,40.0405556,-75.1347222,1N
+90408,9,Melrose Park,,40.0594444,-75.1291667,2N
+90409,10,Elkins Park,,40.0713889,-75.1277778,2N
+90410,11,Jenkintown Wyncote,,40.0927778,-75.1375,3N
+90411,12,Glenside,,40.1013889,-75.1536111,3N

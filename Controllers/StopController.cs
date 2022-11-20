@@ -63,7 +63,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM {agency}_stops";
+            sql = $"SELECT * FROM {agency}_stops_{routeId}";
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
             var Stops = new List<Stop>();

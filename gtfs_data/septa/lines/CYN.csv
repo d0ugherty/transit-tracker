@@ -1,0 +1,6 @@
+﻿stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id
+90001,1,Cynwyd,CYN,40.0066667,-75.2316667,2S
+90002,2,Bala,CYN,40.0011111,-75.2277778,2S
+90003,3,Wynnefield Avenue,CYN,39.99,-75.2255556,1S
+90004,4,Gray 30th Street,CC,39.9566667,-75.1816667,CC
+90005,5,Suburban Station,,39.9538889,-75.1677778,CC

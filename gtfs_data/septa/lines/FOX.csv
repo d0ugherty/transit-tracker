@@ -1,0 +1,12 @@
+﻿stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id
+90406,1,Penn Medicine Station,,39.9480556,-75.1902778,CC
+90004,2,Gray 30th Street,,39.9566667,-75.1816667,CC
+90005,3,Suburban Station,,39.9538889,-75.1677778,CC
+90006,4,Jefferson Station,,39.9525,-75.1580556,CC
+90007,5,Temple University,,39.9813889,-75.1494444,CC
+90009,6,Wayne Junction,,40.0222222,-75.16,1N
+90811,7,Olney,,40.0333333,-75.1227778,1N
+90812,8,Lawndale,,40.0513889,-75.1030556,2N
+90813,9,Cheltenham,,40.0580556,-75.0927778,2N
+90814,10,Ryers,,40.0641667,-75.0863889,2N
+90815,11,Fox Chase,,40.0763889,-75.0833333,2N
