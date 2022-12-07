@@ -7,7 +7,7 @@ namespace Transit_App.Models
 {
     public class Stop
     {
-        public int stop_id { get; set; }
+        public string stop_id { get; set; }
         public string stop_code { get; set; }
         public string stop_name { get; set; }
         public string stop_desc { get; set; }

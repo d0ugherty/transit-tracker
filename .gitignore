@@ -228,7 +228,6 @@ ls
 #####
 Web.Debug.Config
 Web.Release.Config
-App_Start
 .vscode/
 obj
 App_Data/

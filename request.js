@@ -37,18 +37,20 @@ function getStations(agency, routeId) {
         let fillColor = '#c9d3d9';
         console.log(routeId);
         if (routeId == 'ALL') {
-            let url = "/api/stop/?agency=septa";
+            let url = "/api/stop/septa";
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
+                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
         } else {
-            let url = `/api/stop/?agency=${agency}&?routeId=${routeId}`;
+            let url = `/api/stop/${agency}/${routeId}`;
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
+                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
@@ -62,6 +64,7 @@ function getStations(agency, routeId) {
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
+                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
@@ -70,6 +73,7 @@ function getStations(agency, routeId) {
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
+                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
             }) 
