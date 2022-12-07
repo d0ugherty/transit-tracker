@@ -1,9 +1,7 @@
 /**
 * Web document stuff
 * 
-* Multiple URLs are needed for getting locations of Regional Rail
-* Station locations.For some reason the max radius to get locations is around 8 miles.
-* 
+*
 * Trolley stop locations are gathered by route number. Might divide the the location gathering
 * by trolley route/rail line
 */
@@ -22,7 +20,7 @@ $(document).ready(function() {
     map.flyTo([39.952325, -75.163705], 10);
     let routeId = $("#slct__line-septa option:selected").val();
     let agency = "septa";
-    console.log(routeId);
+    stationLayer.clearLayers();
     getStations(agency, routeId);
     event.preventDefault();
   });
@@ -57,19 +55,9 @@ $("#clear").on('click', function(event){
   $("#njtRail").on('click', function (event) {
     let routeId = $("#slct__line-njt option:selected").val();
     let agency = "njt";
+    stationLayer.clearLayers();
     getStations(agency, routeId);
     event.preventDefault();
  });
  
 });
-
-function setInputError(inputElement, message) {
-    inputElement.classList.add("form__input--error");
-    inputElement.classList.remove("form__input--success");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
-}
-
-function clearInputError(inputElement) {
-    inputElement.classList.remove("form__input--error");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
-}
