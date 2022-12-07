@@ -97,6 +97,17 @@ WITH (
 SELECT * FROM septa_stops_MED
 GO
 
+TRUNCATE TABLE septa_stops_NOR
+BULK INSERT septa_stops_NOR
+FROM 'C:\Users\tdoug\source\repos\transit-tracker\gtfs_data\septa\lines\NOR.csv'
+WITH (
+	FORMAT ='CSV',
+	FIRSTROW=2,
+	ROWTERMINATOR='0x0a'
+	)
+SELECT * FROM septa_stops_NOR
+GO
+
 TRUNCATE TABLE septa_stops_PAO
 BULK INSERT septa_stops_PAO
 FROM 'C:\Users\tdoug\source\repos\transit-tracker\gtfs_data\septa\lines\PAO.csv'

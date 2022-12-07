@@ -15,33 +15,15 @@ function getRegionalRailLoc() {
         }
     });
 }
-
-//SEPTA Regional Rail station location marking
-/*function getRegionalRailStations(agency, routeId) {
-    if (agency == 'septa' && routeId == 'ALL') {
-        let url = "/api/stop/?agency=septa";
-        $.getJSON(url)
-            .done(function (data) {
-                $.each(data, function (key, item) {
-                    let color = '#2C3E50';
-                    let fillColor = '#c9d3d9';
-                    displayStationLoc(color, fillColor, item);
-                })
-            })
-    } else if (agency == 'septa') 
-}*/
-
 function getStations(agency, routeId) {
     if (agency == 'septa') {
         let color = '#2C3E50';
         let fillColor = '#c9d3d9';
-        console.log(routeId);
         if (routeId == 'ALL') {
             let url = "/api/stop/septa";
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
-                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
@@ -50,7 +32,6 @@ function getStations(agency, routeId) {
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
-                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
@@ -60,20 +41,18 @@ function getStations(agency, routeId) {
         let color = '#f5853e';
         let fillColor = '#075aaa';
         if (routeId == '0') {
-            let url = "api/stop/?agency=njt";
+            let url = "api/stop/njt";
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
-                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
                 })
         } else {
-            let url = `/api/stop/?agency=${agency}&?routeId=${routeId}`;
+            let url = `/api/stop/${agency}/${routeId}`;
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
-                        console.log(url);
                         displayStations(color, fillColor, item);
                     })
             }) 

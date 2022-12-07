@@ -18,7 +18,7 @@ namespace Transit_App.Controllers
         // GET api/stop/?agency={agency}&?routeId={routeId}
         [HttpGet]
         [Route("{agency}/{routeId}")]
-        public IEnumerable<Stop> Get([FromUri]string agency, [FromUri]string routeId)
+        public IEnumerable<Stop> Get([FromUri] string agency, [FromUri] string routeId)
         {
             string connectionString;
             SqlConnection cnn;
@@ -86,19 +86,19 @@ namespace Transit_App.Controllers
                     zone_id = (string)dataReader["zone_id"]
                 });
             }
-            var options = new JsonSerializerOptions { WriteIndented = true };
+            /*var options = new JsonSerializerOptions { WriteIndented = true };
             string jsonString = JsonSerializer.Serialize(stops, options);
 
-            Console.WriteLine(jsonString);
+            Console.WriteLine(jsonString);*/
             cnn.Close();
             return stops;
         }
-        
+
         // GET api/stop/{agency}
         [HttpGet]
         [Route("{agency}")]
 
-        public IEnumerable<Stop> Get([FromUri]string agency)
+        public IEnumerable<Stop> Get([FromUri] string agency)
         {
             string connectionString;
             SqlConnection cnn;
@@ -134,10 +134,5 @@ namespace Transit_App.Controllers
             cnn.Close();
             return stops;
         }
- 
-
-   
-
-
     }
 }

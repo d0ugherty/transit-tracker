@@ -1,5 +1,4 @@
 SELECT TOP 0 *
-INTO /*new table*/
-FROM /*old table*/
-
+INTO septa_stops_NOR
+FROM septa_stops_AIR
 GO
