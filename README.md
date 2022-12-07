@@ -29,10 +29,7 @@ gtfs-utils library: https://github.com/public-transport/gtfs-utils
 
 
 fix trolley icon flickering after selecting a new route
-
-New Jersey Transit stuff (learn how to process GTFS data)
  
 Visualize vehicle's directional heading
 
-Display map markers by regional rail line
-
+Stops away
