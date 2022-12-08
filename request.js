@@ -15,11 +15,13 @@ function getRegionalRailLoc() {
         }
     });
 }
+
 function getStations(agency, routeId) {
     if (agency == 'septa') {
         let color = '#2C3E50';
         let fillColor = '#c9d3d9';
-        if (routeId == 'ALL') {
+        console.log(routeId);
+        if (routeId === 'ALL') {
             let url = "/api/stop/septa";
             $.getJSON(url)
                 .done(function (data) {
@@ -28,7 +30,7 @@ function getStations(agency, routeId) {
                     })
                 })
         } else {
-            let url = `/api/stop/${agency}/${routeId}`;
+            let url = `/api/stop/septa/${routeId}`;
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
@@ -49,7 +51,7 @@ function getStations(agency, routeId) {
                     })
                 })
         } else {
-            let url = `/api/stop/${agency}/${routeId}`;
+            let url = `/api/stop/njt/${routeId}`;
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {

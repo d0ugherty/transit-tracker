@@ -22,6 +22,12 @@ namespace Transit_App
                );
 
             config.Routes.MapHttpRoute(
+                name: "TrainRoutes",
+                routeTemplate: "api/routes/{agency}/{routeId}",
+                defaults: new { agency = RouteParameter.Optional, routeId = RouteParameter.Optional }
+                );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
