@@ -38,7 +38,7 @@ namespace Transit_App.Controllers
             {
                 Stops.Add(new Stop()
                 {
-                    stop_id = (string)dataReader["stop_id"],
+                    stop_id = (int)dataReader["stop_id"],
                     stop_code = Convert.IsDBNull(dataReader["stop_code"]) ? null : (string)dataReader["stop_code"],
                     stop_name = (string)dataReader["stop_name"],
                     stop_desc = Convert.IsDBNull(dataReader["stop_desc"]) ? null : (string)dataReader["stop_desc"],
@@ -47,10 +47,6 @@ namespace Transit_App.Controllers
                     zone_id = (string)dataReader["zone_id"]
                 });
             }
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            // string jsonString = JsonSerializer.Serialize(Stops, options);
-
-            // Console.WriteLine(jsonString);
             cnn.Close();
             return Stops;
         }
@@ -77,7 +73,7 @@ namespace Transit_App.Controllers
             {
                 stops.Add(new Stop()
                 {
-                    stop_id = (string)dataReader["stop_id"],
+                    stop_id = (int)dataReader["stop_id"],
                     stop_code = Convert.IsDBNull(dataReader["stop_code"]) ? null : (string)dataReader["stop_code"],
                     stop_name = (string)dataReader["stop_name"],
                     stop_desc = Convert.IsDBNull(dataReader["stop_desc"]) ? null : (string)dataReader["stop_desc"],
@@ -86,10 +82,6 @@ namespace Transit_App.Controllers
                     zone_id = (string)dataReader["zone_id"]
                 });
             }
-            /*var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(stops, options);
-
-            Console.WriteLine(jsonString);*/
             cnn.Close();
             return stops;
         }
@@ -118,7 +110,7 @@ namespace Transit_App.Controllers
             {
                 stops.Add(new Stop()
                 {
-                    stop_id = (string)dataReader["stop_id"],
+                    stop_id = (int)dataReader["stop_id"],
                     stop_code = Convert.IsDBNull(dataReader["stop_code"]) ? null : (string)dataReader["stop_code"],
                     stop_name = (string)dataReader["stop_name"],
                     stop_desc = Convert.IsDBNull(dataReader["stop_desc"]) ? null : (string)dataReader["stop_desc"],
@@ -127,10 +119,6 @@ namespace Transit_App.Controllers
                     zone_id = (string)dataReader["zone_id"]
                 });
             }
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            //string jsonString = JsonSerializer.Serialize(stops, options);
-
-            //Console.WriteLine(jsonString);
             cnn.Close();
             return stops;
         }

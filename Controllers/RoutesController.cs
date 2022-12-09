@@ -56,11 +56,7 @@ namespace Transit_App.Controllers
                     route_color = Convert.IsDBNull(dataReader["route_color"]) ? null : (string)dataReader["route_color"],
                 });
             }
-
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            // string jsonString = JsonSerializer.Serialize(Routes, options);
             cnn.Close();
-            //Console.WriteLine(jsonString);
             return Routes;
         }
 
@@ -102,11 +98,7 @@ namespace Transit_App.Controllers
                     route_color = Convert.IsDBNull(dataReader["route_color"]) ? null : (string)dataReader["route_color"],
                 });
             }
-
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            // string jsonString = JsonSerializer.Serialize(Routes, options);
             cnn.Close();
-            //Console.WriteLine(jsonString);
             return Routes;
         }
 
@@ -144,10 +136,6 @@ namespace Transit_App.Controllers
                     result.route_color = Convert.IsDBNull(dataReader["route_color"]) ? null : (string)dataReader["route_color"];
                 };
             }
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            // string jsonString = System.Text.Json.JsonSerializer.Serialize(result, options);
-
-            // Console.WriteLine(jsonString);
             cnn.Close();
             return result;
         }*/
@@ -186,15 +174,8 @@ namespace Transit_App.Controllers
                     result.route_color = Convert.IsDBNull(dataReader["route_color"]) ? null : (string)dataReader["route_color"];
                 };
             }
-            //var options = new JsonSerializerOptions { WriteIndented = true };
-            //string jsonString = System.Text.Json.JsonSerializer.Serialize(result, options);
-
-            //Console.WriteLine(jsonString);
             cnn.Close();
             return result;
         }
-
-
-
     }
 }

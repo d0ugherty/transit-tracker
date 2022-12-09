@@ -114,17 +114,11 @@ function getTrolleyStops(route) {
     });
 }
 
-//NJT Atlantic City Line Stop Locations
-function getACLStops() {
-    let url = "/api/stop/?stopDesc='ACL'";
-    $.getJSON(url)
-        .done(function(data){
-            $.each(data, function (key, item) {
-                let color = '#f5853e';
-                let fillColor = '#075aaa';
-                displayStationLoc(color, fillColor, item);
-            });
-        });
+function getTrainShape(agency, routeId) {
+    if (agency == 'septa') {
+        let color; //add septa color
+        
+    }
+    
 }
-
 

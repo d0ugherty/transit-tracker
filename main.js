@@ -51,7 +51,8 @@ $(document).ready(function() {
 
 $("#clear").on('click', function(event){
     location.reload();
-    });
+});
+  
   $("#njtRail").on('click', function (event) {
     let routeId = $("#slct__line-njt option:selected").val();
     let agency = "njt";

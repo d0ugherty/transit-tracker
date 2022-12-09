@@ -31,4 +31,6 @@
   let trolleyIcon = L.icon({
     iconUrl: './packages/leaflet/images/SEPTATrolleytrans.png',
     iconSize: [30, 30]
-});
+  });
+
+  
