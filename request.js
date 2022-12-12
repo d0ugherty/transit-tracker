@@ -114,11 +114,17 @@ function getTrolleyStops(route) {
     });
 }
 
-function getTrainShape(agency, routeId) {
+/*function getTrainShape(agency, routeId) {
     if (agency == 'septa') {
-        let color; //add septa color
-        
-    }
+        let color = '#566573'; //add septa color
+        let url = `/api/shapes/septa/${routeId}`;
+        $.getJSON(url)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    displayShapes(routeId, color, item);
+                }
+            )});  
+        }
     
-}
+}*/
 

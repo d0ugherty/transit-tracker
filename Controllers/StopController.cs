@@ -18,7 +18,7 @@ namespace Transit_App.Controllers
         // GET api/stop/?agency={agency}&?routeId={routeId}
         [HttpGet]
         [Route("{agency}/{routeId}")]
-        public IEnumerable<Stop> Get([FromUri] string agency, [FromUri] string routeId)
+        public IEnumerable<Stop> GetStopsByRouteId([FromUri] string agency, [FromUri] string routeId)
         {
             string connectionString;
             SqlConnection cnn;
@@ -48,12 +48,13 @@ namespace Transit_App.Controllers
                 });
             }
             cnn.Close();
+            dataReader.Close();
             return Stops;
         }
         // GET api/stop/
         [HttpGet]
         [Route("")]
-        public IEnumerable<Stop> Get()
+        public IEnumerable<Stop> GetAllStops()
         {
             string connectionString;
             SqlConnection cnn;
@@ -83,6 +84,7 @@ namespace Transit_App.Controllers
                 });
             }
             cnn.Close();
+            dataReader.Close();
             return stops;
         }
 
@@ -90,7 +92,7 @@ namespace Transit_App.Controllers
         [HttpGet]
         [Route("{agency}")]
 
-        public IEnumerable<Stop> Get([FromUri] string agency)
+        public IEnumerable<Stop> GetStopsByAgency([FromUri] string agency)
         {
             string connectionString;
             SqlConnection cnn;
@@ -120,6 +122,7 @@ namespace Transit_App.Controllers
                 });
             }
             cnn.Close();
+            dataReader.Close();
             return stops;
         }
     }

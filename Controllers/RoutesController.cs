@@ -57,13 +57,14 @@ namespace Transit_App.Controllers
                 });
             }
             cnn.Close();
+            dataReader.Close();
             return Routes;
         }
 
         //Get routes by agency
         [HttpGet]
         [Route("{agency}")]
-        public IEnumerable<Route> Get([FromUri] string agency)
+        public IEnumerable<Route> GetRoutesByAgency([FromUri] string agency)
         {
             string connectionString;
             SqlConnection cnn;
@@ -99,50 +100,13 @@ namespace Transit_App.Controllers
                 });
             }
             cnn.Close();
+            dataReader.Close();
             return Routes;
         }
 
-        /*[HttpGet]
-        [Route("{agency}/{routeName}")]
-        public Route GetByName([FromUri] string agency, [FromUri] string routeName)
-        {
-            string connectionString;
-            SqlConnection cnn;
-            connectionString = System.IO.File.ReadAllText(@"C:\Users\tdoug\source\repos\transit-tracker\cnnstring.txt");
-            cnn = new SqlConnection(connectionString);
-            cnn.Open();
-
-            SqlCommand command;
-            SqlDataReader dataReader;
-            string sql;
-
-            sql = $"SELECT * FROM {agency}_routes WHERE {routeName}= route_short_name";
-
-            command = new SqlCommand(sql, cnn);
-            dataReader = command.ExecuteReader();
-            Route result = new Route();
-
-            while (dataReader.Read())
-            {
-                {
-                    result.route_id = (string)dataReader["stop_id"];
-                    result.agency_id = (string)dataReader["agency_id"];
-                    result.route_short_name = (string)dataReader["route_short_name"];
-                    result.route_long_name = (string)dataReader["route_long_name"];
-                    result.route_desc = Convert.IsDBNull(dataReader["route_desc"]) ? null : (string)dataReader["route_desc"];
-                    result.route_type = (string)dataReader["route_type"];
-                    result.route_url = Convert.IsDBNull(dataReader["route_url"]) ? null : (string)dataReader["route_url"];
-                    result.route_text_color = Convert.IsDBNull(dataReader["route_text_color"]) ? null : (string)dataReader["route_text_color"];
-                    result.route_color = Convert.IsDBNull(dataReader["route_color"]) ? null : (string)dataReader["route_color"];
-                };
-            }
-            cnn.Close();
-            return result;
-        }*/
-
         [HttpGet]
         [Route("{agency}/{routeId}")]
-        public Route GetById([FromUri] string agency, [FromUri] string routeId)
+        public Route GetRouteById([FromUri] string agency, [FromUri] string routeId)
         {
             string connectionString;
             SqlConnection cnn;
@@ -154,7 +118,7 @@ namespace Transit_App.Controllers
             SqlDataReader dataReader;
             string sql;
 
-            sql = $"SELECT * FROM {agency}_routes WHERE route_id={routeId}";
+            sql = $"SELECT * FROM {agency}_routes WHERE route_id='{routeId}'";
 
             command = new SqlCommand(sql, cnn);
             dataReader = command.ExecuteReader();
@@ -163,7 +127,6 @@ namespace Transit_App.Controllers
             while (dataReader.Read())
             {
                 {
-                    result.route_id = (string)dataReader["stop_id"];
                     result.agency_id = (string)dataReader["agency_id"];
                     result.route_short_name = (string)dataReader["route_short_name"];
                     result.route_long_name = (string)dataReader["route_long_name"];
@@ -175,6 +138,7 @@ namespace Transit_App.Controllers
                 };
             }
             cnn.Close();
+            dataReader.Close();
             return result;
         }
     }

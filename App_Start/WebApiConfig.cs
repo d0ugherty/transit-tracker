@@ -30,7 +30,7 @@ namespace Transit_App
 
             config.Routes.MapHttpRoute(
                 name: "TrainShapes",
-                routeTemplate: "api/routes/{agency}/{id}",
+                routeTemplate: "api/shapes/{agency}/{id}",
                 defaults: new { agency = RouteParameter.Optional, id = RouteParameter.Optional }
             );
 

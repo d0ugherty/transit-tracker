@@ -6,7 +6,7 @@
 * by trolley route/rail line
 */
 $(document).ready(function() {
-
+  displayShapes();
   $("#trainInfo").on('click', function(event) {
     map.flyTo([39.952325, -75.163705],10);
     let routeId = $("#slct__line option:selected").text();
