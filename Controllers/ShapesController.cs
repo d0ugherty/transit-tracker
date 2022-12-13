@@ -80,6 +80,41 @@ namespace Transit_App.Controllers
             dataReader.Close();
             return shapes;
         }
+
+        [HttpGet]
+        [Route("{agency}/{shapeId:int}")]
+        public IEnumerable<Shape> GetShapesById([FromUri] string agency, [FromUri] int shapeId)
+        {
+            string connectionString;
+            SqlConnection cnn;
+            connectionString = System.IO.File.ReadAllText(@"C:\Users\tdoug\source\repos\transit-tracker\cnnstring.txt");
+            cnn = new SqlConnection(connectionString);
+            cnn.Open();
+
+            SqlCommand command;
+            SqlDataReader dataReader;
+            string sql;
+
+            sql = $"SELECT * FROM {agency}_shapes WHERE shape_id={shapeId}";
+            command = new SqlCommand(sql, cnn);
+            dataReader = command.ExecuteReader();
+            var shapes = new List<Shape>();
+            while (dataReader.Read())
+            {
+                shapes.Add(new Shape()
+                {
+                    shape_id = (int)dataReader["shape_id"],
+                    shape_pt_lat = (double)dataReader["shape_pt_lat"],
+                    shape_pt_lon = (double)dataReader["shape_pt_lon"],
+                    shape_pt_sequence = (int)dataReader["shape_pt_sequence"],
+                    shape_dist_traveled = Convert.IsDBNull(dataReader["shape_dist_traveled"]) ? 0 : (double)dataReader["shape_dist_traveled"]
+                });
+            }
+            cnn.Close();
+            dataReader.Close();
+            return shapes;
+        }
+
         [HttpGet]
         [Route("{agency}/{routeId}")]
         public IEnumerable<Shape> GetShapeByRoute([FromUri] string agency, [FromUri] string routeId)

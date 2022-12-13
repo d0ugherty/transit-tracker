@@ -89,27 +89,29 @@ function displayTrolleyStops(item) {
 
 function displayShapes() {
     console.log("display shapes");
+    let shapeIds = [401007, 720005, 801007, 5001, 815005, 538005, 302005, 228005, 516007, 701007, 417005, 203005, 205005, 205007, 327004, 327005];
     
-    let latlngs = []
     let color = '#566573'; //add septa color
-    let url = `/api/shapes/septa`;
-    $.getJSON(url)
-      .done(function (data) {
-        console.log(".done ????");
+    for (let i = 0; i < shapeIds.length; i++) {
+      let url = `api/shapes/septa/${shapeIds[i]}`;
+      let latlngs = []
+      $.getJSON(url)
+        .done(function (data) {
+          console.log(".done ????");
         
-        //console.log(data);
-        for (let i = 0; i < data.length; i++) {
-          //console.log(data[i].shape_pt_lat + ", " + data[i].shape_pt_lon);
-          latlngs[i] = [data[i].shape_pt_lat, data[i].shape_pt_lon];
+          //console.log(data);
+          for (let i = 0; i < data.length; i++) {
+            //console.log(data[i].shape_pt_lat + ", " + data[i].shape_pt_lon);
+            latlngs[i] = [data[i].shape_pt_lat, data[i].shape_pt_lon];
             //latlngs = [data[i].shape_pt_lat, data[i].shape_pt_lon]
             //let polyline = L.polyline(latlngs, { color: 'blue' });
-           // polyline.addTo(map);
-        }
+            // polyline.addTo(map);
+          }
           console.log(latlngs);
           let polyline = L.polyline(latlngs, { color: color, noClip: true }).addTo(map);
-         console.log(polyline.getLatLngs());
-      });
-      
+          console.log(polyline.getLatLngs());
+        });
+    }
    
   }
   
