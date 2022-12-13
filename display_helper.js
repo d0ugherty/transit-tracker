@@ -86,3 +86,30 @@ function displayTrolleyStops(item) {
   }).setContent(`<b><h3>${item.stopname}</h3></b>`);
   stationMarker.bindPopup(popup);
 }
+
+function displayShapes() {
+    console.log("display shapes");
+    
+    let latlngs = []
+    let color = '#566573'; //add septa color
+    let url = `/api/shapes/septa`;
+    $.getJSON(url)
+      .done(function (data) {
+        console.log(".done ????");
+        
+        //console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          //console.log(data[i].shape_pt_lat + ", " + data[i].shape_pt_lon);
+          latlngs[i] = [data[i].shape_pt_lat, data[i].shape_pt_lon];
+            //latlngs = [data[i].shape_pt_lat, data[i].shape_pt_lon]
+            //let polyline = L.polyline(latlngs, { color: 'blue' });
+           // polyline.addTo(map);
+        }
+          console.log(latlngs);
+          let polyline = L.polyline(latlngs, { color: color, noClip: true }).addTo(map);
+         console.log(polyline.getLatLngs());
+      });
+      
+   
+  }
+  

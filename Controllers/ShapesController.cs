@@ -92,21 +92,25 @@ namespace Transit_App.Controllers
                 cnn.Open();
 
                 SqlCommand command;
+                SqlCommand command2;
                 SqlDataReader dataReader;
                 string sql;
+                string sql2;
                 int shapeId;
                 var shapes = new List<Shape>();
 
                 sql = $"SELECT shape_id FROM {agency}_routes_shapes WHERE [dbo.{agency}_routes.route_id]='{routeId}'";
                 command = new SqlCommand(sql, cnn);
                 dataReader = command.ExecuteReader();
-                if (dataReader.Read())
+                try
                 {
                     shapeId = (int)dataReader["shape_id"];
+                    Console.WriteLine(shapeId);
                     dataReader.Close();
-                    sql = $"SELECT * FROM {agency}_shapes WHERE shape_id='{shapeId}'";
-                    command = new SqlCommand(sql, cnn);
+                    sql2 = $"SELECT * FROM {agency}_shapes WHERE shape_id={shapeId}";
+                    command2 = new SqlCommand(sql2, cnn);
                     dataReader = command.ExecuteReader();
+                    Console.WriteLine(shapeId);
                     while (dataReader.Read())
                     {
                         shapes.Add(new Shape()
@@ -118,14 +122,14 @@ namespace Transit_App.Controllers
                             shape_dist_traveled = Convert.IsDBNull(dataReader["shape_dist_traveled"]) ? 0 : (double)dataReader["shape_dist_traveled"]
                         });
                     }
-                    dataReader.Close();
-                    return shapes;
-                }
-                else
+                } catch (Exception ex)
                 {
                     dataReader.Close();
-                    return shapes;
+                    Console.WriteLine("error " + ex);
                 }
+                    dataReader.Close();
+                    return shapes;
+                
             }
         }
     }
