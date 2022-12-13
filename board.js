@@ -14,7 +14,7 @@ function loadBoard(item, optText) {
               let row = $(`<tr><td>${arrivalTime(jsonData[i].Northbound[j].depart_time)}</td>
                   <td>${jsonData[i].Northbound[j].train_id}</td>
                   <td>${jsonData[i].Northbound[j].line}</td>
-                  <td>${jsonData[i].Northbound[j].destination}</td>
+                  <td><span style="color:yellow">${jsonData[i].Northbound[j].destination}</span></td>
                   <td>${jsonData[i].Northbound[j].origin}</td>
                   <td>${isLate(jsonData[i].Northbound[j].status)}</td>
                   <td>${jsonData[i].Northbound[j].track}</td>`);
@@ -26,7 +26,7 @@ function loadBoard(item, optText) {
               let row = $(`<tr><td>${arrivalTime(jsonData[i].Southbound[j].depart_time)}</td>
                   <td>${jsonData[i].Southbound[j].train_id}</td>
                   <td>${jsonData[i].Southbound[j].line}</td>
-                  <td>${jsonData[i].Southbound[j].destination}</td>
+                  <td><span style="color:yellow">${jsonData[i].Southbound[j].destination}</span></td>
                   <td>${jsonData[i].Southbound[j].origin}</td>
                   <td>${isLate(jsonData[i].Southbound[j].status)}</td>
                   <td>${jsonData[i].Southbound[j].track}</td>`);

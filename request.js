@@ -67,16 +67,16 @@ function getArrivals(station, optText) {
     $.ajax({
         url: `https://www3.septa.org/api/Arrivals/index.php?station=${station}&results=10`,
         type: 'GET',
-        dataType: 'jsonp',
+        dataType: 'json',
         success: function(data) {
             $('#departuresTable tbody').empty();
             $.each(data, function(i, item) {
                 loadBoard(item, optText);
             });
-        },
-        complete: function() {
-            setTimeout(getArrivals, 5000);
         }
+        //complete: function() {
+         //   setTimeout(getArrivals, 5000);
+       // }
     });
 }
 

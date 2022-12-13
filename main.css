@@ -302,14 +302,11 @@ select::-ms-expand {
     display: none;
     position: fixed;
     justify-content: center;
-
     z-index: 2;
-    left: 35%;
-    top: 50%;
-    margin-left: -50px;
-    margin-top: -300px;
+    left: 25.5%;
+    top: 18%;
     height: 100%;
-    max-width: 75%;
+    max-width: 60%;
     overflow: auto;
 
 }
@@ -447,6 +444,7 @@ color: #F44336;
 
 table.table td i {
 font-size: 19px;
+max-width: fit-content;
 }
 
 table.table .avatar {
