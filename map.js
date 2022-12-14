@@ -22,7 +22,6 @@ let trainLayer = L.layerGroup();
 let stationLayer = L.layerGroup().addTo(map);
 let trolleyLayer = L.layerGroup().addTo(map);
 let trolleyStopLayer = L.layerGroup().addTo(map);
-let shapesLayer = L.layerGroup().addTo(map);
 let trainIcon = L.icon({
   iconUrl: './packages/leaflet/images/SEPTARegionalRail-bw.png',
   iconSize: [30, 30]

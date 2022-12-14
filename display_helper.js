@@ -5,6 +5,8 @@
  * >          
  */
 
+const { Console } = require("console");
+
 function displayTrainCurrentLoc(item, trainLayer, icon) {
   let trainNumber = item.trainno;
   let trainMarker = L.marker([item.lat, item.lon], {
@@ -88,8 +90,11 @@ function displayTrolleyStops(item) {
 }
 
 function displayShapes() {
-    console.log("display shapes");
-    let shapeIds = [401007, 720005, 801007, 5001, 815005, 538005, 302005, 228005, 516007, 701007, 417005, 203005, 205005, 205007, 327004, 327005];
+  let shapeIds = [5401, 401005, 401007,720004,
+    720005, 7801, 801007, 1005,
+    5815, 815005, 5531, 203005,
+    205005, 327005, 417005, 701007, 302005, 300007,
+    516007, 505007, 501007, 228005, 516007, 538005];
     
     let color = '#566573'; //add septa color
     for (let i = 0; i < shapeIds.length; i++) {
@@ -97,21 +102,30 @@ function displayShapes() {
       let latlngs = []
       $.getJSON(url)
         .done(function (data) {
-          console.log(".done ????");
-        
-          //console.log(data);
           for (let i = 0; i < data.length; i++) {
-            //console.log(data[i].shape_pt_lat + ", " + data[i].shape_pt_lon);
             latlngs[i] = [data[i].shape_pt_lat, data[i].shape_pt_lon];
-            //latlngs = [data[i].shape_pt_lat, data[i].shape_pt_lon]
-            //let polyline = L.polyline(latlngs, { color: 'blue' });
-            // polyline.addTo(map);
           }
           console.log(latlngs);
-          let polyline = L.polyline(latlngs, { color: color, noClip: true }).addTo(map);
+          let polyline = L.polyline(latlngs, { color: '#698396'}).addTo(map);
           console.log(polyline.getLatLngs());
         });
     }
-   
-  }
+   }
+  /*function displayShapes() {
+    console.log("display shapes");
+    let routes = ['AIR', 'CHE', 'CHW', 'CYN', 'FOX', 'LAN', 'MAN', 'NOR', 'PAO', 'TRE', 'WAR', 'WIL', 'WTR'];
+    routes.forEach(function (id) {
+      let url = `api/shapes/septa/${id}`;
+      let latlngs = [];
+      $.getJSON(url)
+        .done(function (data) {
+          for (let i = 0; i < data.length; i++) {
+            console.log(id + " shape " + data[i].shape_id + " sequence " + data[i].shape_pt_sequence);
+            latlngs[i] = [data[i].shape_pt_lat, data[i].shape_pt_lon];
+          }
+          console.log(latlngs);
+          let polyline = L.polyline(latlngs, { color: '#566573' }).addTo(map);
+        });
+    });
+  }*/
   
