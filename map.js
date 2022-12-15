@@ -7,7 +7,7 @@
  * */
  const map = L.map('map', {
     center: [39.952325, -75.163705],
-    zoom: 10,
+   zoom: 11,
     layers: [
         L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png')
         //L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png')

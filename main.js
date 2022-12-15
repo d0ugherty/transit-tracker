@@ -8,7 +8,7 @@
 $(document).ready(function() {
   displayShapes();
   $("#trainInfo").on('click', function(event) {
-    map.flyTo([39.952325, -75.163705],10);
+    map.flyTo([39.952325, -75.163705],13);
     let routeId = $("#slct__line option:selected").text();
     let agency = "septa";
     getRegionalRailLoc()
